@@ -16,10 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
     .options({
         postCss: [ tailwindcss('./tailwind.config.js') ],
     })
-    .copy(
-        'node_modules/@fortawesome/fontawesome-free/webfonts',
-        'public/webfonts'
-    )
     .version();
 if (mix.inProduction()) {
     mix.version();
