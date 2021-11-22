@@ -63,11 +63,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            cd ~/domains/shoot-it.ysoserious.usermd.net/app
+            cd ~/www/websites/shoot-it/
             git reset --hard HEAD
-            git pull origin master
-            source $HOME/.bash_profile
-            php -v
+            git pull origin production
             composer install
             npm install
             npm run production
