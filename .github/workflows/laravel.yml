@@ -60,8 +60,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          username: ${{ secrets.SSH_USERNAME }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             cd ~/www/websites/shoot-it/
             git reset --hard HEAD
