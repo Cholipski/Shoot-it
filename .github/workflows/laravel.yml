@@ -71,6 +71,8 @@ jobs:
             sudo docker exec -it shoot-it_app_1 composer install
             npm install
             npm run production
+            sudo docker-compose -f docker-compose.prod.yml up -d --build
             php artisan clear
             php artisan migrate --force
             php artisan storage:link
+            php artisan key:generate
