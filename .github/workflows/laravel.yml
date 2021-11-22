@@ -64,10 +64,11 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             cd ~/www/websites/shoot-it/
+            git fetch
+            git checkout production
             git reset --hard HEAD
-            git pull origin production
-            sudo docker exec -it shoot-it_app_1 bash
-            composer install
+            git pull --ff-only
+            sudo docker exec -it shoot-it_app_1 composer install
             npm install
             npm run production
             php artisan clear
