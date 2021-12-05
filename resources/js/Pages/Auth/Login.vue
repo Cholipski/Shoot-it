@@ -7,7 +7,7 @@
         {{ status }}
     </div>
 
-    <form class="w-2/5" @submit.prevent="submit">
+    <form class="w-2/5 2xl:w-1/5" @submit.prevent="submit">
         <div>
             <BreezeLabel for="email" value="Email" />
             <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
