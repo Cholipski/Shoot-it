@@ -3,7 +3,7 @@
 
     <BreezeValidationErrors class="mb-4" />
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="w-2/5 2xl:w-1/5">
         <div>
             <BreezeLabel for="name" value="Name" />
             <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
