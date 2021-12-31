@@ -13,13 +13,16 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .sass('resources/sass/global.scss','public/css')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
         require('autoprefixer'),
     ])
     .webpackConfig(require('./webpack.config'))
-    .sourceMaps();
+    .sourceMaps()
+    .extract()
+    .copyDirectory('resources/fonts', 'public/fonts');
 
 if (mix.inProduction()) {
     mix.version();

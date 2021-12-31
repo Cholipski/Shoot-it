@@ -1,0 +1,30 @@
+// FONTS
+
+@font-face {
+    font-family: 'EB Garamond';
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/EBGaramond-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: 'Playfair Display SC';
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/FrederickatheGreat-Regular.ttf");
+}
+
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+
+.transparent-white-5{
+    color: rgba(255,255,255,.5)!important;
+}
+.eb-garamond{
+    font-family: 'EB Garamond',serif !important;
+}
+
