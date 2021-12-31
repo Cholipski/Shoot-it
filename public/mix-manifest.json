@@ -1,5 +1,11 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/manifest.js": "/js/manifest.js",
     "/css/app.css": "/css/app.css",
-    "/css/custom.css": "/css/custom.css"
+    "/css/global.css": "/css/global.css",
+    "/js/vendor.js": "/js/vendor.js",
+    "/fonts/.DS_Store": "/fonts/.DS_Store",
+    "/fonts/EBGaramond-Italic-VariableFont_wght.ttf": "/fonts/EBGaramond-Italic-VariableFont_wght.ttf",
+    "/fonts/EBGaramond-VariableFont_wght.ttf": "/fonts/EBGaramond-VariableFont_wght.ttf",
+    "/fonts/FrederickatheGreat-Regular.ttf": "/fonts/FrederickatheGreat-Regular.ttf"
 }
