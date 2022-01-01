@@ -45,7 +45,7 @@
         <p>Zaloguj się za pomocą konta społecznościowego</p>
 
         <div class="justify-center items-center gap-11 mt-5 social-login flex mb-5">
-            <i class="fab fa-facebook"></i>
+            <a :href="route('facebook.login')"><i class="fab fa-facebook"></i></a>
             <i class="fab fa-google"></i>
             <i class="fab fa-apple"></i>
         </div>
