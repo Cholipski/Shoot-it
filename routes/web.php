@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaceBookController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,8 @@ Route::get('/contact',function (){
     return Inertia::render('Contact');
 });
 require __DIR__.'/auth.php';
+
+Route::prefix('facebook')->name('facebook.')->group( function(){
+    Route::get('auth', [FaceBookController::class, 'loginUsingFacebook'])->name('login');
+    Route::get('callback', [FaceBookController::class, 'callbackFromFacebook'])->name('callback');
+});
