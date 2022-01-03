@@ -41,7 +41,7 @@ class GoogleController extends Controller
 
             Auth::loginUsingId($saveUser->id);
 
-            return redirect()->route('home');
+            return redirect()->route('dashboard');
         } catch (\Throwable $th) {
             throw $th;
         }
