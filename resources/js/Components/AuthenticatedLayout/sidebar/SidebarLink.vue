@@ -1,9 +1,12 @@
 <template>
     <Link :href="to" class="link flex justify-items-center items-center relative cursor-pointer h-12 mt-2 p-2.5 pl-5 text-white no-underline"
         :class="{'active': $page.component === componentName}">
-        <i class="icon text-3xl pr-4" :class="icon"></i>
+        <div class="w-8 absolute flex justify-center mr-4 align-baseline">
+            <i class="icon text-3xl" :class="icon"></i>
+        </div>
+
         <transition name="fade">
-            <span v-if="!collapsed" class="whitespace-nowrap">
+            <span v-if="!collapsed" class="whitespace-nowrap pl-12">
                 <slot />
             </span>
         </transition>

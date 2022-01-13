@@ -3,10 +3,9 @@
         <Sidebar class="hidden sm:block"></Sidebar>
         <div class="container main-container" :style="{ 'margin-left': sidebarWidth}">
             <div class="overflow-hidden bg-gray-100 shadow-lg w-full fixed">
-                <div class="h-16 border-gray-200">
+                <div class="h-12 border-gray-200">
                     {{$page.props.auth.user.id}}
                 </div>
-                <button @click="sideMenuOpen = !sideMenuOpen"> click me </button>
             </div>
             <main>
                 <slot />
