@@ -6,9 +6,9 @@
         </div>
 
         <SidebarLink to="/" icon="fas fa-home" component-name="Dashboard"> Strona główna </SidebarLink>
-        <SidebarLink to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>
+        <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>
         <SidebarLink to="/" icon="fas fa-book-reader" component-name="Learning"> Baza wiedzy </SidebarLink>
-        <SidebarLink to="/" icon="fas fa-question" component-name="Questions">Baza pytań</SidebarLink>
+        <SidebarLink v-if="hasAnyPermission(['view questions'])" to="/" icon="fas fa-question" component-name="Questions">Baza pytań</SidebarLink>
         <SidebarLink to="/" icon="fas fa-graduation-cap" component-name="Exams">Egzaminy</SidebarLink>
         <SidebarLink to="/" icon="fas fa-poll" component-name="Score">Moje wyniki</SidebarLink>
         <SidebarLink to="/" icon="fas fa-trophy" component-name="Ranking">Ranking</SidebarLink>

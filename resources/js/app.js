@@ -20,7 +20,17 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .component('Head',Head)
-            .mixin({ methods: { route } })
+            .mixin({ methods: {
+                route,
+                hasAnyPermission: function (permission) {
+                    let allPermissions = this.$page.props.auth.can;
+                    let hasPermission = false;
+                    permission.forEach(function (item){
+                        if(allPermissions[item]) hasPermission = true;
+                    });
+                    return hasPermission;
+                }
+            } })
             .mount(el);
     },
 });
