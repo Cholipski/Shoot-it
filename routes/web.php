@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FaceBookController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\Question\QuestionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,14 @@ Route::prefix('google')->name('google.')->group( function(){
     Route::get('login', [GoogleController::class, 'loginWithGoogle'])->name('login');
     Route::any('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
 });
+
+
+// Question routes
+
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::get('/questions', [QuestionController::class,'index'])->name('questions.index');
+});
+
 
 
 //test route

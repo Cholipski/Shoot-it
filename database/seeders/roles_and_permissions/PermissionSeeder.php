@@ -53,8 +53,8 @@ class PermissionSeeder extends Seeder
 
         // Assign permissions to role
 
-        $club_member_role->givePermissionTo([$can_view_question, $can_view_answers, $can_view_categories]);
-        $member_role->givePermissionTo([$can_view_question, $can_view_answers, $can_view_categories]);
+        $club_member_role->givePermissionTo([$can_view_questions, $can_view_answers, $can_view_categories]);
+        $member_role->givePermissionTo([$can_view_questions, $can_view_answers, $can_view_categories]);
         $president_role->givePermissionTo(Permission::all());
 
     }
