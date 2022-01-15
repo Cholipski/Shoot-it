@@ -48,7 +48,7 @@ Route::prefix('google')->name('google.')->group( function(){
 // Question routes
 
 Route::middleware(['auth', 'verified'])->group(function (){
-    Route::get('/questions', [QuestionController::class,'index'])->name('questions.index');
+    Route::resource('question', QuestionController::class);
 });
 
 

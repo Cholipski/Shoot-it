@@ -6138,3 +6138,7 @@ readers do not read off random characters that represent icons */
 .transparent-white-5 {
   color: rgba(255, 255, 255, 0.5) !important;
 }
+
+.eb-garamond {
+  font-family: "EB Garamond", serif !important;
+}

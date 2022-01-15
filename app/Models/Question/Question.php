@@ -24,12 +24,12 @@ class Question extends Model
     /**
      * @return HasOne
      */
-    public function getCategory(): HasOne
+    public function category(): HasOne
     {
         return $this->hasOne(CategoryController::class);
     }
 
-    public function getAnswers(): HasMany
+    public function answers(): HasMany
     {
         return $this->hasMany(QuestionAnswer::class);
     }
