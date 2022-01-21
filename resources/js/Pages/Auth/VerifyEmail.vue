@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Button from '@/Components/Shared/Button.vue'
+import Button from '@/Components/Button.vue'
 import GuestLayout from '@/Layouts/Guest.vue'
 import { Link } from '@inertiajs/inertia-vue3';
 

@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import Button from '@/Components/Shared/Button.vue'
+import Button from '@/Components/Button.vue'
 import GuestLayout from '@/Layouts/Guest.vue'
-import Input from '@/Components/Shared/Input.vue'
+import Input from '@/Components/Input.vue'
 import Label from '@/Components/Label.vue'
 import ValidationErrors from '@/Components/ValidationErrors.vue'
 

@@ -8,9 +8,13 @@
         </div>
         <form @submit.prevent="submit" class="w-4/5 sm:w-3/5 md:w-3/5 2xl:w-2/5">
             <div>
-                <Label for="name" value="Nazwa" />
+                <Label for="first_name" value="Imię" />
+                <Input id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" required autofocus autocomplete="first_name" />
+            </div>
 
-                <Input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+            <div>
+                <Label for="last_name" value="Nazwisko" />
+                <Input id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name" required autofocus autocomplete="last_name" />
             </div>
 
             <div class="mt-4">
@@ -43,13 +47,13 @@
 </template>
 
 <script>
-import Button from '@/Components/Shared/Button.vue'
+import Button from '@/Components/Button.vue'
 import GuestLayout from '@/Layouts/Guest.vue'
-import Input from '@/Components/Shared/Input.vue'
+import Input from '@/Components/Input.vue'
 import Label from '@/Components/Label.vue'
 import ValidationErrors from '@/Components/ValidationErrors.vue'
 import { Link } from '@inertiajs/inertia-vue3';
-import Logo from '@/Components/Shared/ApplicationLogo';
+import Logo from '@/Components/ApplicationLogo';
 
 export default {
     layout: GuestLayout,
@@ -66,7 +70,8 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                name: '',
+                first_name: '',
+                last_name: '',
                 email: '',
                 password: '',
                 password_confirmation: '',

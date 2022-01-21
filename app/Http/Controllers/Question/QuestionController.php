@@ -21,7 +21,25 @@ class QuestionController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('Question/List',['questions'=>new QuestionCollection(Question::all())]);
+        request()->validate([
+            'direction' => ['in:asc,desc'],
+            'field'=>['in:value,category']
+        ]);
+
+        $query = Question::query();
+
+        if(request('search')){
+            $query->where('value','LIKE','%'.request('search').'%');
+        }
+
+        if(request()->has(['field','direction'])){
+            $query->orderBy(request('field'),request('direction'));
+        }
+
+        return Inertia::render('Question/List',[
+            'questions'=>new QuestionCollection($query->Paginate(7)),
+            'filters' => request()->all(['search','field','direction'])
+        ]);
     }
 
     public function update(QuestionRequest $request, Question $question): RedirectResponse
@@ -49,7 +67,7 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request): RedirectResponse
     {
-        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
+//        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
 
         try{
             DB::transaction(function () use ($request) {

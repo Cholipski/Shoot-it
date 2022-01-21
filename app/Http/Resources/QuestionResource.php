@@ -16,6 +16,7 @@ class QuestionResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'value' => $this->value,
             'image_path' => $this->img,
             'category' => $this->category_id ? QuestionCategory::query()->find($this->category_id)->first()->name : null,
