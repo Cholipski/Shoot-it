@@ -19,7 +19,8 @@ class Question extends Model
      */
     protected $fillable = [
         'value',
-        'image'
+        'image',
+        'is_delete'
     ];
 
     /**

@@ -26,7 +26,7 @@ class QuestionController extends Controller
             'field'=>['in:value,category']
         ]);
 
-        $query = Question::query();
+        $query = Question::query()->where('is_delete','=',0);
 
         if(request('search')){
             $query->where('value','LIKE','%'.request('search').'%');
@@ -40,6 +40,11 @@ class QuestionController extends Controller
             'questions'=>new QuestionCollection($query->Paginate(7)),
             'filters' => request()->all(['search','field','direction'])
         ]);
+    }
+
+    public function edit(Question $question)
+    {
+        return Inertia::render('Question/Edit');
     }
 
     public function update(QuestionRequest $request, Question $question): RedirectResponse
@@ -67,6 +72,7 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request): RedirectResponse
     {
+        dd($request);
 //        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
 
         try{
@@ -105,13 +111,15 @@ class QuestionController extends Controller
         return Inertia::render('Question/Show',['data' =>new QuestionShowResource($question)]);
     }
 
-    public function delete(Question $question)
+    public function destroy(Question $question)
     {
-        abort_if(!Auth::user()->can('delete question'),401,'Unauthorized');
+//        abort_if(!Auth::user()->can('delete question'),401,'Unauthorized');
 
         try{
-            $question->deleteOrFail();
-            return Redirect::route('question.index')->withErrors([
+            $question->update([
+                'is_delete' => 1
+            ]);
+            return Redirect::route('question.index')->with([
                 'message' => 'Question delete successfully'
             ]);
         }

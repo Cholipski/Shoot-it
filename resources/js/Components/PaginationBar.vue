@@ -1,24 +1,18 @@
 <template>
-    <div class="justify-center">
-                    <Link class="page-link whitespace-nowrap text-lg py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                          :href="this.data.links[0].url">
-                        Poprzednia
-                    </Link>
-
-                <div class="overflow-x-hidden flex w-1/6">
-                    <div class="page-item hidden lg:block" v-for="link in links()" :key="link.label">
-                        <Link v-html="link.label"
-                              class="page-link whitespace-nowrap text-lg py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                              :href="link.url">
-                        </Link>
-                    </div>
-                </div>
-
-                    <Link class="page-link whitespace-nowrap text-lg py-3 px-6 relative block border-0 bg-transparent outline-none transition-all duration-300 rounded-md text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                          :href="this.data.links[this.data.links.length-1].url">
-                        Następna
-                    </Link>
-
+    <div class="flex flex-col items-center">
+        <!-- Help text -->
+        <span class="text-sm text-gray-700 dark:text-gray-400">
+      Wyświetla pytania od <span class="font-semibold text-gray-900 dark:text-white">{{ this.data.meta.from }}</span> do <span class="font-semibold text-gray-900 dark:text-white">{{ this.data.meta.to }}</span>
+  </span>
+        <!-- Buttons -->
+        <div class="inline-flex mt-2 xs:mt-0">
+            <Link :href="this.data.links.prev" preserve-scroll class="py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                Poprzednia
+            </Link>
+            <Link :href="this.data.links.next" preserve-scroll class="py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                Następna
+            </Link>
+        </div>
     </div>
 
 </template>

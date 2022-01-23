@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar float-left fixed z-10 top-0 left-0 bottom-0 flex flex-col" :style="{ width: sidebarWidth}">
+    <div class="sidebar float-left fixed z-50 top-0 left-0 bottom-0 flex flex-col" :style="{ width: sidebarWidth}">
         <div class="h-28 pt-5">
             <Logo />
 

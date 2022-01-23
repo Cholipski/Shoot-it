@@ -1,7 +1,7 @@
 <template>
     <div class="flex">
         <Sidebar class="hidden sm:block"></Sidebar>
-        <div class="main-container relative" :style="{ 'margin-left': sidebarWidth}">
+        <div class="main-container relative w-full" :style="{ 'margin-left': sidebarWidth}">
             <div class="overflow-hidden z-10 bg-gray-100 shadow-lg w-full fixed">
                 <div class="h-12 border-gray-200">
                     {{$page.props.auth.user.id}}

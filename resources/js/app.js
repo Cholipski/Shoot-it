@@ -5,6 +5,9 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import Layout from './Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-vue3';
+import '@themesberg/flowbite';
+import UUID from "vue-uuid";
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 createInertiaApp({
@@ -18,7 +21,7 @@ createInertiaApp({
     },
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
-            .use(plugin)
+            .use(plugin, UUID)
             .component('Head',Head)
             .mixin({ methods: {
                 route,

@@ -6142,3 +6142,10 @@ readers do not read off random characters that represent icons */
 .eb-garamond {
   font-family: "EB Garamond", serif !important;
 }
+
+.primary-btn {
+  background: #13293d;
+}
+.primary-btn:hover {
+  background: #1b1f2f;
+}
