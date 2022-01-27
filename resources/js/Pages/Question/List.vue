@@ -40,7 +40,7 @@
                                 {{ question.value }}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                Otto
+                                {{ question.category }}
                             </td>
                             <td class="text-sm text-gray-900 font-light py-4 whitespace-nowrap flex justify-center gap-2">
                                 <Tooltip value="Wyświetl">

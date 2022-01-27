@@ -19,7 +19,7 @@ class QuestionResource extends JsonResource
             'id' => $this->id,
             'value' => $this->value,
             'image_path' => $this->img,
-            'category' => $this->category_id ? QuestionCategory::query()->find($this->category_id)->first()->name : null,
+            'category' => $this->category_id ? QuestionCategory::query()->find($this->category_id)->name : null,
             'created_at'=> $this->created_at,
             'updated_at' => $this->updated_at
         ];

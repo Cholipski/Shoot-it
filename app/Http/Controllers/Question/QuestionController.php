@@ -8,6 +8,7 @@ use App\Http\Resources\QuestionCollection;
 use App\Http\Resources\QuestionShowResource;
 use App\Models\Question\Question;
 use App\Models\Question\QuestionAnswer;
+use App\Models\Question\QuestionCategory;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -67,19 +68,21 @@ class QuestionController extends Controller
 
     public function create(): Response
     {
-        return Inertia::render('Question/Create');
+        return Inertia::render('Question/Create',[
+            'categories' => QuestionCategory::all()
+        ]);
     }
 
     public function store(QuestionRequest $request): RedirectResponse
     {
-        dd($request);
+        //dd($request);
 //        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
-
         try{
             DB::transaction(function () use ($request) {
                 $question = Question::query()->create(
                     [
-                        'value' => $request->value
+                        'value' => $request->value,
+                        'category_id' => $request->category,
                     ]
                 );
 
@@ -106,7 +109,7 @@ class QuestionController extends Controller
 
     public function show(Question $question){
 
-        abort_if(!Auth::user()->can('show question'),401,'Unauthorized');
+//        abort_if(!Auth::user()->can('show question'),401,'Unauthorized');
 
         return Inertia::render('Question/Show',['data' =>new QuestionShowResource($question)]);
     }

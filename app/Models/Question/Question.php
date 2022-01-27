@@ -20,7 +20,8 @@ class Question extends Model
     protected $fillable = [
         'value',
         'image',
-        'is_delete'
+        'is_delete',
+        'category_id',
     ];
 
     /**
