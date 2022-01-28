@@ -27,7 +27,8 @@ class GoogleController extends Controller
                 $saveUser = User::updateOrCreate([
                     'google_id' => $user->getId(),
                 ],[
-                    'name' => $user->getName(),
+                    'first_name' => $user['firstName'],
+                    'last_name' => $user['lastName'],
                     'email' => $user->getEmail(),
                     'password' => Hash::make($user->getName().'@'.$user->getId())
                 ]);

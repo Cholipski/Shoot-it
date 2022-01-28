@@ -26,7 +26,8 @@ class FaceBookController extends Controller
             $saveUser = User::updateOrCreate([
                 'facebook_id' => $user->getId(),
             ],[
-                'name' => $user->getName(),
+                'first_name' => $user['firstName'],
+                'last_name' => $user['lastName'],
                 'email' => $user->getEmail(),
                 'password' => Hash::make($user->getName().'@'.$user->getId())
             ]);
