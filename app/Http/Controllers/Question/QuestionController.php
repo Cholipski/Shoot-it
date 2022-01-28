@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Question;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Question\QuestionRequest;
 use App\Http\Resources\QuestionCollection;
+use App\Http\Resources\QuestionResource;
 use App\Http\Resources\QuestionShowResource;
 use App\Models\Question\Question;
 use App\Models\Question\QuestionAnswer;
@@ -45,19 +46,46 @@ class QuestionController extends Controller
 
     public function edit(Question $question)
     {
-        return Inertia::render('Question/Edit');
+        return Inertia::render('Question/Edit',[
+            'question' => $question,
+            'answers' => $question->answers()->where('is_delete','=',0)->get(),
+            'categories' => QuestionCategory::all(),
+        ]);
     }
 
     public function update(QuestionRequest $request, Question $question): RedirectResponse
     {
-        abort_if(!Auth::user()->can('update question'),401,'Unauthorized');
+        //dd($request, $question);
+        //abort_if(!Auth::user()->can('update question'),401,'Unauthorized');
 
         try{
             DB::transaction(function () use ($request,$question) {
-                $question->update(['value'=>$request->value]);
+                $question->update([
+                    'value'=>$request->value,
+                    'category_id'=>$request->category,
+                ]);
+
+                foreach ($request->answers as $answer){
+                    if(isset($answer['id'])){
+                        QuestionAnswer::where('id','=',$answer['id'])->update([
+                            'value' => $answer['answer'],
+                            'is_correct' => $answer['is_correct'],
+                            'is_delete' => $answer['deleted'],
+                        ]);
+                    }else{
+                        QuestionAnswer::create([
+                            'value' => $answer['answer'],
+                            'question_id' => $question->id,
+                            'is_correct' => $answer['is_correct'],
+                        ]);
+                    }
+                }
+
             });
 
-            return redirect()->back()->with(['message'=>'Question update successfully']);
+            return Redirect::route('question.edit', $question)->with([
+                    'message'=>'Question update successfully',
+                ]);
         }
         catch(\Exception $e){
             return redirect()->back()->withErrors([
@@ -75,7 +103,6 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request): RedirectResponse
     {
-        //dd($request);
 //        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
         try{
             DB::transaction(function () use ($request) {

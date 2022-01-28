@@ -21,13 +21,16 @@
                     </modal-default>
 
                 </span>
-                <div class="grid grid-flow-row-dense grid-cols-3 grid-rows-2 mt-8">
-                    <div class="col-span-2 p-6">
-                        {{this.data.question}}
+                <div class="mt-8">
+                    <div class="flex h-48 mb-6">
+                        <div class="w-3/4 p-6 h-full">
+                            {{this.data.question}}
+                        </div>
+                        <div class="w-1/4 h-full bg-gray-50 border-gray-100 border-2">
+                        </div>
                     </div>
-                    <div class="bg-gray-50 border-gray-100 border-2">
-                    </div>
-                    <div class="col-span-3">
+
+                    <div class="flex flex-col">
                         <div class="flex justify-end mt-2">
                             <button type="button" v-on:click="this.showCorrectAnswer = !this.showCorrectAnswer" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800">
                                 {{this.showCorrectAnswer ? 'Ukryj prawidłową odpowiedź' : 'Pokaż prawidłową odpowiedź'}}</button>
