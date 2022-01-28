@@ -55,7 +55,6 @@ class QuestionController extends Controller
 
     public function update(QuestionRequest $request, Question $question): RedirectResponse
     {
-        //dd($request, $question);
         //abort_if(!Auth::user()->can('update question'),401,'Unauthorized');
 
         try{
@@ -103,7 +102,7 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request): RedirectResponse
     {
-//        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
+        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
         try{
             DB::transaction(function () use ($request) {
                 $question = Question::query()->create(
@@ -136,14 +135,14 @@ class QuestionController extends Controller
 
     public function show(Question $question){
 
-//        abort_if(!Auth::user()->can('show question'),401,'Unauthorized');
+        abort_if(!Auth::user()->can('show question'),401,'Unauthorized');
 
         return Inertia::render('Question/Show',['data' =>new QuestionShowResource($question)]);
     }
 
     public function destroy(Question $question)
     {
-//        abort_if(!Auth::user()->can('delete question'),401,'Unauthorized');
+        abort_if(!Auth::user()->can('delete question'),401,'Unauthorized');
 
         try{
             $question->update([
