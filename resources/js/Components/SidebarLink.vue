@@ -1,5 +1,5 @@
 <template>
-    <Link :href="to" class="link flex justify-items-center items-center relative cursor-pointer h-12 mt-2 p-2.5 pl-5 text-white no-underline"
+    <Link class="link flex justify-items-center items-center relative cursor-pointer h-12 mt-2 p-2.5 pl-5 text-white no-underline"
         :class="{'active': $page.component === componentName}">
         <div class="w-8 absolute flex justify-center mr-4 align-baseline">
             <i class="icon text-3xl" :class="icon"></i>
@@ -15,7 +15,7 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import { collapsed } from "@/Components/AuthenticatedLayout/sidebar/state";
+import { collapsed } from "@/Store/Sidebar/state";
 
 export default {
     name: "SidebarLink",
@@ -23,7 +23,7 @@ export default {
         Link
     },
     props: {
-        to: { type: String, required: true},
+        // to: { type: String, required: true},
         icon: { type: String, required: true},
         componentName: { type: String, required: true}
     },

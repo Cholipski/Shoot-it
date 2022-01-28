@@ -56,11 +56,11 @@
 <script>
 
 import GuestLayout from '@/Layouts/Guest.vue'
-import Logo from '@/Components/Shared/ApplicationLogo';
+import Logo from '@/Components/ApplicationLogo';
 import { Link } from '@inertiajs/inertia-vue3';
-import AppButton from "@/Components/Shared/Button";
+import AppButton from "@/Components/Button";
 import Checkbox from "@/Components/Checkbox";
-import Input from "@/Components/Shared/Input";
+import Input from "@/Components/Input";
 import Label from "@/Components/Label";
 
 export default {

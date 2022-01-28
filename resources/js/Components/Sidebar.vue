@@ -1,14 +1,14 @@
 <template>
-    <div class="sidebar float-left fixed z-10 top-0 left-0 bottom-0 flex flex-col" :style="{ width: sidebarWidth}">
+    <div class="sidebar float-left fixed z-50 top-0 left-0 bottom-0 flex flex-col" :style="{ width: sidebarWidth}">
         <div class="h-28 pt-5">
             <Logo />
 
         </div>
 
-        <SidebarLink to="/" icon="fas fa-home" component-name="Dashboard"> Strona główna </SidebarLink>
+        <SidebarLink :href="route('dashboard')" icon="fas fa-home" component-name="Dashboard"> Strona główna </SidebarLink>
         <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>
         <SidebarLink to="/" icon="fas fa-book-reader" component-name="Learning"> Baza wiedzy </SidebarLink>
-        <SidebarLink v-if="hasAnyPermission(['view questions'])" to="/" icon="fas fa-question" component-name="Questions">Baza pytań</SidebarLink>
+        <SidebarLink :href="route('question.index')" icon="fas fa-question" component-name="Questions">Baza pytań</SidebarLink>
         <SidebarLink to="/" icon="fas fa-graduation-cap" component-name="Exams">Egzaminy</SidebarLink>
         <SidebarLink to="/" icon="fas fa-poll" component-name="Score">Moje wyniki</SidebarLink>
         <SidebarLink to="/" icon="fas fa-trophy" component-name="Ranking">Ranking</SidebarLink>
@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import { collapsed, toggleSidebar, sidebarWidth } from './state'
-import Logo from '@/Components/Shared/ApplicationLogo';
-import SidebarLink from "@/Components/AuthenticatedLayout/sidebar/SidebarLink";
-import SidebarProfile from "@/Components/AuthenticatedLayout/sidebar/SidebarProfile";
+import { collapsed, toggleSidebar, sidebarWidth } from '../Store/Sidebar/state'
+import Logo from '@/Components/ApplicationLogo';
+import SidebarLink from "@/Components/SidebarLink";
+import SidebarProfile from "@/Components/SidebarProfile";
 
 export default {
     components:{

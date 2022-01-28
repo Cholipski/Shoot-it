@@ -1,13 +1,13 @@
 <template>
-    <div class="flex min-h-screen">
+    <div class="flex">
         <Sidebar class="hidden sm:block"></Sidebar>
-        <div class="container main-container" :style="{ 'margin-left': sidebarWidth}">
-            <div class="overflow-hidden bg-gray-100 shadow-lg w-full fixed">
+        <div class="main-container relative w-full" :style="{ 'margin-left': sidebarWidth}">
+            <div class="overflow-hidden z-10 bg-gray-100 shadow-lg w-full fixed">
                 <div class="h-12 border-gray-200">
                     {{$page.props.auth.user.id}}
                 </div>
             </div>
-            <main>
+            <main class="pt-12" >
                 <slot />
             </main>
         </div>
@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import Logo from '../Components/Shared/ApplicationLogo'
-import Sidebar from "@/Components/AuthenticatedLayout/sidebar/Sidebar";
-import { sidebarWidth } from '@/Components/AuthenticatedLayout/sidebar/state'
+import Logo from '../Components/ApplicationLogo'
+import Sidebar from "@/Components/Sidebar";
+import { sidebarWidth } from '@/Store/Sidebar/state'
 
 export default {
     components: {

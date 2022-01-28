@@ -17,8 +17,8 @@
 
 <script>
 import {Link} from '@inertiajs/inertia-vue3';
-import BottomNavbar from '../Components/GuestLayout/BottomNavbar';
-import Copyright from "@/Components/Shared/Copyright";
+import BottomNavbar from '../Components/BottomNavbar';
+import Copyright from "@/Components/Copyright";
 
 export default {
     components: {

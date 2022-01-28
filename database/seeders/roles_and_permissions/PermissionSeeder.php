@@ -30,6 +30,7 @@ class PermissionSeeder extends Seeder
         $can_view_questions = Permission::create(['name' => 'view questions']);
         $can_delete_question = Permission::create(['name' => 'delete question']);
         $can_update_question = Permission::create(['name' => 'update question']);
+        $can_show_question = Permission::create(['name' => 'show question']);
 
         // Answer model
 
@@ -53,8 +54,8 @@ class PermissionSeeder extends Seeder
 
         // Assign permissions to role
 
-        $club_member_role->givePermissionTo([$can_view_question, $can_view_answers, $can_view_categories]);
-        $member_role->givePermissionTo([$can_view_question, $can_view_answers, $can_view_categories]);
+        $club_member_role->givePermissionTo([$can_view_questions, $can_view_answers, $can_view_categories, $can_show_question]);
+        $member_role->givePermissionTo([$can_view_questions, $can_view_answers, $can_view_categories, $can_show_question]);
         $president_role->givePermissionTo(Permission::all());
 
     }
