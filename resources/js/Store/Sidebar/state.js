@@ -8,3 +8,9 @@ export const SIDEBAR_WIDTH_COLLAPSED = 78
 export const sidebarWidth = computed(
     () => `${collapsed.value ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH}px`
 )
+
+export const sidebarWidthNumber = computed(
+    () => collapsed.value ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH
+)
+
+
