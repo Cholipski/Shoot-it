@@ -1,8 +1,11 @@
 <template>
-    <div class="profile flex w-full h-12 absolute bottom-0 mb-4 pl-3">
-        <img class="rounded-full z-50" src="http://karboklinika.pl/wp-content/uploads/2020/04/elegancki-mezczyzna-682x1024.jpg" />
+    <div class="profile sm:flex w-full h-12 bottom-0 mt-9 mb-8 pl-3 pt-3">
+        <img v-if="getAvatar() !== ''" class="rounded-full z-50 w-14 h-14" :src="getAvatar()" />
+        <div v-else class="generate-image rounded-full z-50 w-14 absolute h-14 flex justify-center font-bold items-center text-gray-50">
+            KD
+        </div>
         <transition name="fade">
-            <div v-if="!collapsed" class="flex flex-col w-full justify-items-center items-center">
+            <div v-if="!collapsed" class="flex flex-col w-full justify-items-center items-center ml-5 mt-1">
                 <span class="text-lg whitespace-nowrap">{{getFullName()}}</span>
                 <span class="text-sm text-gray-500 hover:text-white cursor-pointer whitespace-nowrap">Wyświetl profil</span>
             </div>
@@ -23,6 +26,9 @@ export default {
     methods:{
         getFullName: function (){
             return this.$page.props.auth.user.first_name + " " + this.$page.props.auth.user.last_name;
+        },
+        getAvatar: function (){
+            return this.$page.props.auth.user.avatar;
         }
     }
 }
@@ -39,5 +45,12 @@ export default {
     .fade-leave-to {
         opacity: 0;
     }
+    .profile{
+        border-top: 1px solid rgba(255,255,255,0.1);
+        .generate-image{
+            background: #161925;
+        }
+    }
+
 
 </style>
