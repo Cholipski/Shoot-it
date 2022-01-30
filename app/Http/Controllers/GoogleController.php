@@ -31,12 +31,13 @@ class GoogleController extends Controller
 
             $is_user = User::where('email', $user->getEmail())->first();
             if(!$is_user){
-
+                $first_name = explode(' ',$user->getName())[0];
+                $last_name = explode(' ',$user->getName())[1];
                 $saveUser = User::updateOrCreate([
                     'google_id' => $user->getId(),
                 ],[
-                    'first_name' => $user['first_name'],
-                    'last_name' => $user['last_name'],
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
                     'email' => $user->getEmail(),
                     'password' => Hash::make($user->getName().'@'.$user->getId())
                 ]);
