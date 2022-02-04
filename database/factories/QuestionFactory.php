@@ -19,6 +19,7 @@ class QuestionFactory extends Factory
     {
         return [
             'value' => $this->faker->text,
+            'category_id' => rand(1,2),
         ];
     }
 }
