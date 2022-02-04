@@ -116,7 +116,7 @@ export default {
             },
             form: this.$inertia.form({
                 value: '',
-                category: this.categories[0].id ? this.category[0].id : 0,
+                category: 1,//this.categories[0].id ? this.category[0].id : 0,
                 answers: [
                     {
                         answer: '',
