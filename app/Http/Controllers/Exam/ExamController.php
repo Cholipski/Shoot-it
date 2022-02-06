@@ -26,20 +26,42 @@ class ExamController extends Controller
     }
 
     public function index(){
-        return Inertia::render('Exam/Index');
+
+        $exams = Exam::query()
+            ->where('user_id','=',Auth::user()->id)
+            ->orderBy('created_at','desc')
+            ->paginate(6);
+
+        return Inertia::render('Exam/Index',[
+            'exams'=>$exams,
+        ]);
     }
 
     public function create()
     {
-        return redirect()->back()->with(['message'=> ["examInProgress"=>1]]);
-//        $last_exam = Exam::query()->where('user_id','=',Auth::user()->id)->orderBy('created_at')->first();
-//        if(Carbon::now()->diffInSeconds($last_exam->created_at->format('Y-m-d H:i:s')) > 300){
-//            $exam = Exam::create([
-//                'user_id' => Auth::user()->getAuthIdentifier(),
-//            ]);
-//        }
+        $examInProgress = Exam::query()
+            ->where('user_id','=',Auth::user()->id)
+            ->where('is_active','=',1)
+            ->first();
 
+        if($examInProgress != null){
+            return redirect()->back()->with(['message'=> ["examInProgress"=>1]]);
+        }
+        else{
+            $exam = Exam::create([
+                'user_id' => Auth::user()->getAuthIdentifier(),
+                'exam_number' => Exam::query()
+                        ->where('user_id','=',Auth::user()->getAuthIdentifier())
+                        ->orderBy('created_at', 'desc')
+                        ->first() ? Exam::query()
+                        ->where('user_id','=',Auth::user()->getAuthIdentifier())
+                        ->orderBy('created_at', 'desc')
+                        ->first()->exam_number + 1 : 1,
+            ]);
 
-//        dd($this->questionService->startExam($this->settings, $exam->id));
+            dd($this->questionService->startExam($this->settings, $exam->id));
+
+        }
+
     }
 }

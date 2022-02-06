@@ -13,7 +13,8 @@ class Exam extends Model
 
     protected $fillable = [
         'user_id',
-        'is_active'
+        'is_active',
+        'exam_number'
     ];
 
     public static function boot()
