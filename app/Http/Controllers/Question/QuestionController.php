@@ -39,7 +39,7 @@ class QuestionController extends Controller
         }
 
         return Inertia::render('Question/List',[
-            'questions'=>new QuestionCollection($query->Paginate(7)),
+            'questions'=>new QuestionCollection($query->Paginate(5)),
             'filters' => request()->all(['search','field','direction'])
         ]);
     }
@@ -55,7 +55,7 @@ class QuestionController extends Controller
 
     public function update(QuestionRequest $request, Question $question): RedirectResponse
     {
-        //abort_if(!Auth::user()->can('update question'),401,'Unauthorized');
+        abort_if(!Auth::user()->can('update question'),401,'Unauthorized');
 
         try{
             DB::transaction(function () use ($request,$question) {
@@ -102,7 +102,7 @@ class QuestionController extends Controller
 
     public function store(QuestionRequest $request): RedirectResponse
     {
-        abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
+        //abort_if(!Auth::user()->can('create question'),401,'Unauthorized');
         try{
             DB::transaction(function () use ($request) {
                 $question = Question::query()->create(

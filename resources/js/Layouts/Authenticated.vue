@@ -1,12 +1,12 @@
 <template>
     <div class="flex">
         <Sidebar class="hidden sm:block"></Sidebar>
-        <div class="main-container relative" :style="{ width: mainContainerWidth()}">
+        <div class="main-container relative" :style="{ width: mainContainerWidth(), 'margin-left': sidebarWidth }">
             <div class="overflow-hidden z-10 bg-gray-100 shadow-lg fixed navbar">
                 <div class="h-12 border-gray-200 grid grid-flow-col auto-cols-auto">
                     <div>
                     </div>
-                    <div class="flex justify-end items-center pr-3">
+                    <div class="flex justify-end items-center pr-8">
                         <Link :href="route('logout')" method="post" as="button" type="button" class="logout flex items-center gap-2">
                             <i class="logout-icon fas fa-sign-out-alt text-gray-600 text-3xl cursor-pointer" />
                             <span>Wyloguj</span>
@@ -25,7 +25,7 @@
 <script>
 import Logo from '../Components/ApplicationLogo'
 import Sidebar from "@/Components/Sidebar";
-import {collapsed, SIDEBAR_WIDTH, SIDEBAR_WIDTH_COLLAPSED, sidebarWidthNumber} from '@/Store/Sidebar/state'
+import {collapsed, sidebarWidth, SIDEBAR_WIDTH, SIDEBAR_WIDTH_COLLAPSED, sidebarWidthNumber} from '@/Store/Sidebar/state'
 import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
@@ -53,7 +53,7 @@ export default {
         }
     },
     setup() {
-        return { sidebarWidthNumber }
+        return { sidebarWidthNumber, sidebarWidth  }
     },
 
     methods: {

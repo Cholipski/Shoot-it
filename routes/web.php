@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\FaceBookController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\Question\QuestionController;
+use App\Models\Exam\Exam;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -51,11 +53,9 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::resource('question', QuestionController::class);
 });
 
+// Exam routes
 
-
-//test route
-
-Route::get('/test',function (){
-    $user = auth()->user();
-
+Route::middleware(['auth', 'verified'])->group(function (){
+    Route::resource('exam', ExamController::class);
 });
+
