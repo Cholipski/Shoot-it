@@ -4,12 +4,12 @@
             <div class="h-4/5 flex flex-col gap-16 justify-start items-center mt-8">
 
             </div>
-            <div class="h-1/5 md:justify-end lg:justify-around flex flex-col md:flex-col lg:flex-row md:items-start lg:items-end mb-3 gap-2">
+            <div  class="h-1/5 md:justify-end lg:justify-around flex flex-col md:flex-col lg:flex-row md:items-start lg:items-end mb-3 gap-2">
                 <Copyright />
                 <BottomNavbar />
             </div>
         </div>
-        <div class="w-screen md:w-3/5 right-side shadow-2xl">
+        <div class="w-screen md:w-3/5 right-side shadow-2xl text-black">
             <slot />
         </div>
     </div>

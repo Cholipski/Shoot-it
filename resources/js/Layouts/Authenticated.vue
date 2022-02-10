@@ -3,7 +3,7 @@
         <div class="left-sidebar hidden md:block">
             <Sidebar />
         </div>
-        <div class="w-screen md:w-full bg-base-100 min-h-screen" data-theme="light">
+        <div class="w-screen md:w-full bg-base-100 min-h-screen text-black" data-theme="light">
             <div class="w-full">
 
                 <div class="navbar mb-2 shadow-lg bg-base-100 text-gray-400">
