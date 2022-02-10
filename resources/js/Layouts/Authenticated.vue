@@ -27,11 +27,8 @@
                                     <a>Item 1</a>
                                 </li>
                                 <li>
-                                    <a>Item 2</a>
-                                </li>
-                                <li>
-                                    <Link :href="route('logout')" method="post" as="button" type="button" class="logout flex items-center gap-2">-->
-                                        <i class="logout-icon fas fa-sign-out-alt text-gray-600 text-3xl cursor-pointer" />
+                                    <Link :href="route('logout')" method="post" as="button" type="button" class="logout flex items-center gap-2">
+                                        <i class="logout-icon fas fa-sign-out-alt text-gray-600 text-lg cursor-pointer" />
                                         <span>Wyloguj</span>
                                     </Link>
                                 </li>
