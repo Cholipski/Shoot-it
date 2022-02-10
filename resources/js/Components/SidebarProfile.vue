@@ -1,6 +1,6 @@
 <template>
-    <div class="profile sm:flex pb-3 bottom-0 pl-3 pt-3 fixed" :style="{width: sidebarWidth}">
-        <img v-if="getAvatar() !== ''" class="rounded-full z-50 w-14 h-14" :src="getAvatar()" />
+    <div class="flex-col justify-items-center pb-3 bottom-0 pt-3">
+        <img v-if="getAvatar() !== ''" class="rounded-full z-50 mx-auto w-14 h-14" :src="getAvatar()" />
         <div v-else class="generate-image rounded-full z-50 w-14 absolute h-14 flex justify-center font-bold items-center text-gray-50">
             KD
         </div>
@@ -14,15 +14,9 @@
 </template>
 
 <script>
-import {collapsed, sidebarWidth } from "@/Store/Sidebar/state";
 
 export default {
     name: "SidebarProfile",
-
-    setup(props){
-        return {collapsed, sidebarWidth};
-    },
-
     methods:{
         getFullName: function (){
             return this.$page.props.auth.user.first_name + " " + this.$page.props.auth.user.last_name;
@@ -46,10 +40,6 @@ export default {
         opacity: 0;
     }
     .profile{
-        border-top: 1px solid rgba(255,255,255,0.1);
-        background-color: var(--sidebar-bg-color);
-        z-index: 999 !important;
-        transition: 0.3s ease;
 
         .generate-image{
             background: #161925;

@@ -10,8 +10,7 @@
                     <div class="flex justify-end w-full">
                         <Link
                             :href="route('question.create')"
-                            class="primary-btn rounded-full pt-3 pb-3 pl-5 pr-5 mb-2 shadow-md text-white"
-                        > Dodaj pytanie </Link>
+                            class="btn btn-outline rounded hover:bg-gray-neural hover:text-gray-200"> Dodaj pytanie </Link>
                     </div>
                     <div class="flex w-2/6 h-14 bg-white rounded">
                         <input class="relative px-6 h-10 py-2 w-full rounded focus:ring-0 focus:border-gray-800" autocomplete="off" type="text" v-model="params.search" name="search" placeholder="Szukaj..." />
@@ -66,7 +65,14 @@
                     </table>
 
                     <PaginationBar :data="{...questions}" />
-
+                    <div class="btn-group">
+                        <button class="btn btn-xs">«</button>
+                        <button class="btn btn-xs">1</button>
+                        <button class="btn btn-xs btn-active">2</button>
+                        <button class="btn btn-xs">3</button>
+                        <button class="btn btn-xs">4</button>
+                        <button class="btn btn-xs">»</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -87,7 +87,7 @@
 <style scoped lang="scss">
     .application-logo {
         width: auto;
-        height: 127px;
+        height: 110px;
         filter: invert(17%) sepia(96%) saturate(829%) hue-rotate(181deg) brightness(97%) contrast(108%);
         &.rotating {
             transition: transform 1s ease-in-out;

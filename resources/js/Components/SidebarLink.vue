@@ -6,7 +6,7 @@
         </div>
 
         <transition name="fade">
-            <span v-if="!collapsed" class="whitespace-nowrap pl-12">
+            <span v-if="!collapsed" class="whitespace-nowrap" :class="icon ? 'pl-12' : 'pl-5'">
                 <slot />
             </span>
         </transition>
@@ -23,8 +23,7 @@ export default {
         Link
     },
     props: {
-        // to: { type: String, required: true},
-        icon: { type: String, required: true},
+        icon: { type: String, required: false},
         componentName: { type: String, required: true}
     },
 
