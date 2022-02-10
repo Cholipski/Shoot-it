@@ -15,7 +15,6 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import { collapsed } from "@/Store/Sidebar/state";
 
 export default {
     name: "SidebarLink",

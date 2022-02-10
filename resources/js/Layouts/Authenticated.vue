@@ -1,25 +1,4 @@
 <template>
-<!--    <div class="flex">-->
-<!--        <div class="left-panel hidden md:block">-->
-<!--            <Sidebar class="hidden sm:block"></Sidebar>-->
-<!--        </div>-->
-<!--        <div class="right-panel bg-gray-100">-->
-<!--            <div class="overflow-hidden z-10 bg-gray-100 shadow-lg navbar">-->
-<!--                <div class="h-12 border-gray-200 grid grid-flow-col auto-cols-auto">-->
-<!--                    <div class="flex justify-end items-center pr-8">-->
-<!--                        <Link :href="route('logout')" method="post" as="button" type="button" class="logout flex items-center gap-2">-->
-<!--                            <i class="logout-icon fas fa-sign-out-alt text-gray-600 text-3xl cursor-pointer" />-->
-<!--                            <span>Wyloguj</span>-->
-<!--                        </Link>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <main class="pt-12" >-->
-<!--                <slot />-->
-<!--            </main>-->
-<!--        </div>-->
-<!--    </div>-->
-
     <div class="flex">
         <div class="left-sidebar hidden md:block">
             <Sidebar />
@@ -51,7 +30,10 @@
                                     <a>Item 2</a>
                                 </li>
                                 <li>
-                                    <a>Item 3</a>
+                                    <Link :href="route('logout')" method="post" as="button" type="button" class="logout flex items-center gap-2">-->
+                                        <i class="logout-icon fas fa-sign-out-alt text-gray-600 text-3xl cursor-pointer" />
+                                        <span>Wyloguj</span>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -66,7 +48,6 @@
 <script>
 import Logo from '../Components/ApplicationLogo'
 import Sidebar from "@/Components/Sidebar";
-import {collapsed, sidebarWidth, SIDEBAR_WIDTH, SIDEBAR_WIDTH_COLLAPSED, sidebarWidthNumber} from '@/Store/Sidebar/state'
 import { Link } from '@inertiajs/inertia-vue3'
 import Notifications from "@/Components/Notifications";
 
