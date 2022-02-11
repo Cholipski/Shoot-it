@@ -16,7 +16,7 @@
                         <input class="relative px-6 h-10 py-2 w-full rounded focus:ring-0 focus:border-gray-800" autocomplete="off" type="text" v-model="params.search" name="search" placeholder="Szukaj..." />
                     </div>
                     <table class="table-auto text-center min-w-full ">
-                        <thead class="border-b bg-gray-800">
+                        <thead class="border-b bg-neutral">
                         <tr>
                             <th scope="col" class="text-sm font-medium text-white px-6 py-4 w-screen">
                                 <span class="flex gap-4 justify-center items-baseline" @click="sort('value')">
@@ -42,20 +42,20 @@
                                 {{ question.category }}
                             </td>
                             <td class="text-sm text-gray-900 font-light py-4 whitespace-nowrap flex justify-center gap-2">
-                                <Tooltip value="Wyświetl">
+                                <div data-tip="Wyświetl" class="tooltip">
                                     <Link :href="route('question.show', {id: question.id})">
                                         <i class="fas fa-eye text-lg hover:text-gray-500"></i>
                                     </Link>
-                                </Tooltip>
-                                <Tooltip value="Edytuj">
+                                </div>
+                                <div data-tip="Edytuj" class="tooltip">
                                     <Link :href="route('question.edit', {id: question.id})">
                                         <i class="fas fa-edit text-lg hover:text-gray-500"></i>
                                     </Link>
-                                </Tooltip>
+                                </div>
                                 <delete-confirmation :route="route('question.destroy', {id: question.id})">
-                                    <Tooltip value="Usuń">
+                                    <div data-tip="Usuń " class="tooltip">
                                         <i class="fas fa-trash-alt text-lg hover:text-red-300 text-red-700"></i>
-                                    </Tooltip>
+                                    </div>
                                 </delete-confirmation>
 
                             </td>
@@ -65,14 +65,6 @@
                     </table>
 
                     <PaginationBar :data="{...questions}" />
-                    <div class="btn-group">
-                        <button class="btn btn-xs">«</button>
-                        <button class="btn btn-xs">1</button>
-                        <button class="btn btn-xs btn-active">2</button>
-                        <button class="btn btn-xs">3</button>
-                        <button class="btn btn-xs">4</button>
-                        <button class="btn btn-xs">»</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -87,7 +79,6 @@ import Input from "@/Components/Input";
 import Button from "@/Components/Button";
 import {Link} from "@inertiajs/inertia-vue3";
 import Breadcrumbs from "@/Components/Breadcrumbs";
-import Tooltip from "@/Components/Tooltip";
 import DeleteConfirmation from "@/Components/DeleteConfirmation";
 
 export default {
@@ -99,7 +90,6 @@ export default {
         Button,
         Link,
         Breadcrumbs,
-        Tooltip,
         DeleteConfirmation
     },
     props: {
