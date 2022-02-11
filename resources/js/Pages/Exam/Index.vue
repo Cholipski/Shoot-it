@@ -21,29 +21,40 @@
                             <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </a>
                     </div>
-                    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4">
-                        <div v-for="exam in exams.data" class="p-6 mt-4 mr-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                            <h4 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white flex justify-center items-center">Egzamin # {{exam.exam_number}}</h4>
-                            <a href="#" class="flex justify-center items-center">
-                                <h4 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                                    {{ formatDate(exam.created_at) }}</h4>
-                            </a>
-                            <span class="mb-2 font-bold tracking-tight flex justify-center items-center" :class="[classExamStatus(exam)]">
-                                {{ examStatus(exam) }}
-                            </span>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 h-8">
-                                <span v-if="!exam.is_active">Poprawne odpwiedzi: 9/10</span>
-                                <vue-countdown v-else :time="20 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }">
-                                    Pozostały czas: {{ minutes }} minut, {{ seconds }} sekund.
-                                </vue-countdown>
-                            </p>
-                            <a v-if="!exam.is_active" href="#" class="w-full flex sm:w-auto flex bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white rounded-lg items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                <div class="-mt-1 font-sans text-sm font-semibold">Szczegóły</div>
-                            </a>
-                            <a v-else href="#" class="w-full flex sm:w-auto flex bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white rounded-lg items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                                <div class="-mt-1 font-sans text-sm font-semibold">Kontynuuj</div>
-                            </a>
+                    <div class="w-full grid-cols-4 shadow stats mt-4" v-for="exam in exams.data">
+                        <div class="stat place-items-center place-content-center">
+                            <div class="stat-value text-xl font-normal  ">Egzamin # {{exam.exam_number}}</div>
+                            <div class="stat-desc">{{ formatDate(exam.created_at) }}</div>
+                        </div>
 
+                        <div class="stat place-items-center place-content-center">
+                            <div v-if="exam.is_active">
+                                <div class="stat-value flex justify-center text-sm lg:text-xl font-normal">
+                                    Pozostały czas:
+                                </div>
+                                <div class="stat-desc">
+                                    <vue-countdown class="flex justify-center" :time="20 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }">
+                                        {{ minutes }} minut, {{ seconds }} sekund.
+                                    </vue-countdown>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <div class="stat-value text-sm lg:text-xl font-normal">
+                                    Poprawne odpwiedzi:
+                                </div>
+                                <div class="stat-desc flex justify-center">
+                                    9/10
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="stat place-items-center place-content-center">
+                            <div class="stat-value text-info text-sm lg:text-xl font-normal" v-if="exam.is_active">w trakcie</div>
+                            <div class="stat-value text-sm lg:text-xl font-normal" :class="exam.is_passed ? 'text-success' : 'text-error'" v-else> {{ examStatus(exam) }}</div>
+                        </div>
+
+                        <div class="stat place-items-center place-content-center">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                         </div>
                     </div>
                 </div>
@@ -82,17 +93,14 @@ export default {
         },
 
         examStatus(exam){
-            if(exam.is_active){
-                return "Egzamin w trakcie";
+
+            if(exam.is_passed){
+                return "Zdany";
             }
             else{
-                if(exam.is_passed){
-                    return "Zdany";
-                }
-                else{
-                    return "Niezdany";
-                }
+                return "Niezdany";
             }
+
         },
         classExamStatus(exam){
             if(exam.is_active){
