@@ -39,7 +39,9 @@ class HandleInertiaRequests extends Middleware
                 'can' => $request->user() ? $request->user()->getPermissionArray() : [],
             ],
             'flash' => [
-                'message' => fn () => $request->session()->get('message')
+                'message' => fn () => $request->session()->get('message'),
+                'message_time' => fn () => $request->session()->get('message_time'),
+                'popstate' => false
             ],
         ]);
     }

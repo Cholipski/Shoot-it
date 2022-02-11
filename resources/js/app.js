@@ -22,7 +22,13 @@ createInertiaApp({
         return createApp({ render: () => h(app, props) })
             .use(plugin, UUID)
             .component('Head',Head)
-            .mixin({ methods: {
+            .mixin({
+                mounted() {
+                    window.addEventListener('popstate', ()=> {
+                        this.$page.props.flash.popstate = true;
+                    })
+                },
+                methods: {
                 route,
                 hasAnyPermission: function (permission) {
                     let allPermissions = this.$page.props.auth.can;
