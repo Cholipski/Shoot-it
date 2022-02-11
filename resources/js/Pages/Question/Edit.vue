@@ -55,7 +55,6 @@
                                        v-model="input.answer"
                                        :class="{'border-red-500 bg-red-200':input.deleted}"/>
                             </div>
-                            <CheckboxToggle v-model="input.is_correct"/>
                         </div>
                         <div class="flex items-center justify-end mt-4 flex-col-reverse gap-2 sm:flex-row">
                             <Button class="text-white w-full bg-gray-800 hover:bg-gray-900 focus:ring-4 mt-12 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
@@ -72,16 +71,12 @@
 
 <script>
 import Breadcrumbs from "@/Components/Breadcrumbs";
-import CheckboxToggle from "@/Components/CheckboxToggle";
 import { uuid } from 'vue-uuid';
-import Tooltip from "@/Components/Tooltip";
 
 export default {
     name: "Edit",
     components: {
         Breadcrumbs,
-        CheckboxToggle,
-        Tooltip,
     },
     props: {
         categories: {

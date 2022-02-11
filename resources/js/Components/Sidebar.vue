@@ -18,9 +18,8 @@
                     </template>
                     <template v-slot:links>
                         <SidebarLink :href="route('question.index')" component-name="Score">Wyswietl listę</SidebarLink>
-                        <SidebarLink to="/" component-name="Score">Utwórz nowe</SidebarLink>
+                        <SidebarLink :href="route('question.create')" component-name="Score">Utwórz nowe</SidebarLink>
                         <SidebarLink to="/" component-name="Score">Export do PDF</SidebarLink>
-
                     </template>
                 </SidebarDropdown>
                 <SidebarLink :href="route('exam.index')" icon="fas fa-graduation-cap" component-name="Exams">Egzaminy</SidebarLink>

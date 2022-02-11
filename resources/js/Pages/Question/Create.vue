@@ -61,10 +61,10 @@
                         </div>
                         <div class="group flex items-center gap-3" v-for="(input,k) in form.answers" :key="k">
                             <div class="flex items-center mt-2" @click="remove(k)"
-                                 v-show="k || ( !k && form.answers.length > 1)">
+                                 v-show="k > 2">
                                 <i class="fas fa-trash text-sm text-red-900 hover:text-red-600 cursor-pointer"></i>
                             </div>
-                            <div class="flex mt-2 w-1/2">
+                            <div class="flex mt-2 w-1/2" :class="{ 'ml-6': k < 3 }">
                                 <span
                                     class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                 {{ String.fromCharCode(65 + k) }}
@@ -74,7 +74,10 @@
                                        placeholder=""
                                        v-model="input.answer"/>
                             </div>
-                            <CheckboxToggle v-model="input.is_correct"/>
+                            <input type="radio" name="correct_answer" v-model="input.is_correct" v-bind:value="true" v-on:click="changeCorrectAnswer(input)" class="toggle mt-2">
+                            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 mt-2">
+                                {{input.is_correct ? "TAK" : "NIE"}}
+                            </span>
                         </div>
                         <div class="flex items-center justify-end mt-4 flex-col-reverse gap-2 sm:flex-row">
                             <Button
@@ -93,14 +96,12 @@
 
 <script>
 import Breadcrumbs from "@/Components/Breadcrumbs";
-import CheckboxToggle from "@/Components/CheckboxToggle";
 import {uuid} from 'vue-uuid';
 
 export default {
     name: "Create",
     components: {
         Breadcrumbs,
-        CheckboxToggle,
     },
     props: {
         categories: {
@@ -116,11 +117,11 @@ export default {
             },
             form: this.$inertia.form({
                 value: '',
-                category: 1,//this.categories[0].id ? this.category[0].id : 0,
+                category: 1,
                 answers: [
                     {
                         answer: '',
-                        is_correct: false,
+                        is_correct: true,
                     },
                     {
                         answer: '',
@@ -150,11 +151,19 @@ export default {
         },
         remove(index) {
             this.form.answers.splice(index, 1);
+        },
+        changeCorrectAnswer(input)
+        {
+            this.form.answers.forEach((item) =>{ item.is_correct = false});
         }
     }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+[type='radio']:checked
+{
+    background-image: none;
+    background: black;
+}
 </style>

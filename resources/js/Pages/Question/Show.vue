@@ -55,14 +55,12 @@
 </template>
 
 <script>
-import Tooltip from "@/Components/Tooltip";
 import ModalDefault from "@/Components/ModalDefault";
 import {random} from "lodash";
 
 export default {
     name: "Show",
     components: {
-        Tooltip,
         ModalDefault
     },
     props: ['data'],
