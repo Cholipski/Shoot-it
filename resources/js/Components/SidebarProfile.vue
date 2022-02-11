@@ -1,13 +1,12 @@
 <template>
-    <div class="flex-col justify-items-center pb-3 bottom-0 pt-3">
+    <div class="pb-3 pt-3 flex flex-col justify-center">
         <img v-if="getAvatar() !== ''" class="rounded-full z-50 mx-auto w-14 h-14" :src="getAvatar()" />
-        <div v-else class="generate-image rounded-full z-50 w-14 absolute h-14 flex justify-center font-bold items-center text-gray-50">
-            KD
+        <div v-else class="bg-neutral rounded-full z-50 w-14 h-14 flex justify-center mx-auto font-bold items-center text-gray-50">
+            {{ getInitials() }}
         </div>
         <transition name="fade">
             <div v-if="!collapsed" class="flex flex-col justify-items-center items-center ml-5 mt-1">
                 <span class="text-lg whitespace-nowrap">{{getFullName()}}</span>
-                <span class="text-sm text-gray-500 hover:text-white cursor-pointer whitespace-nowrap">Wyświetl profil</span>
             </div>
         </transition>
     </div>
@@ -23,6 +22,9 @@ export default {
         },
         getAvatar: function (){
             return this.$page.props.auth.user.avatar;
+        },
+        getInitials: function (){
+            return this.$page.props.auth.user.first_name[0] + this.$page.props.auth.user.last_name[0];
         }
     }
 }
@@ -38,12 +40,6 @@ export default {
     .fade-enter,
     .fade-leave-to {
         opacity: 0;
-    }
-    .profile{
-
-        .generate-image{
-            background: #161925;
-        }
     }
 
 
