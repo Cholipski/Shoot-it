@@ -17,8 +17,9 @@ class CreateExamQuestionsTable extends Migration
         Schema::create('exam_questions', function (Blueprint $table) {
             $table->id();
             $table->foreignUuid('exam_id')->constrained('exams')->onDelete('cascade');
-            $table->json('answers');
-            $table->foreignUuid('selected_answer')->constrained('question_answers')->onDelete('cascade');
+            $table->foreignUuid('question_id')->constrained('questions')->onDelete('cascade');
+            $table->json('order_answers');
+            $table->foreignUuid('selected_answer')->nullable()->constrained('question_answers')->onDelete('cascade');
             $table->timestamps();
         });
     }

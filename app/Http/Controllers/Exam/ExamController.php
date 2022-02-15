@@ -39,15 +39,15 @@ class ExamController extends Controller
 
     public function create()
     {
-        $examInProgress = Exam::query()
-            ->where('user_id','=',Auth::user()->id)
-            ->where('is_active','=',1)
-            ->first();
-
-        if($examInProgress != null){
-            return redirect()->back()->with(['message'=> ["examInProgress"=>1]]);
-        }
-        else{
+//        $examInProgress = Exam::query()
+//            ->where('user_id','=',Auth::user()->id)
+//            ->where('is_active','=',1)
+//            ->first();
+//
+//        if($examInProgress != null){
+//            return redirect()->back()->with(['message'=> ["examInProgress"=>1]]);
+//        }
+//        else{
             $exam = Exam::create([
                 'user_id' => Auth::user()->getAuthIdentifier(),
                 'exam_number' => Exam::query()
@@ -59,9 +59,10 @@ class ExamController extends Controller
                         ->first()->exam_number + 1 : 1,
             ]);
 
-            dd($this->questionService->startExam($this->settings, $exam->id));
-
+            
+            return Inertia::render('Exam/Exam',[
+                'Questions' => $this->questionService->startExam($this->settings, $exam->id)
+            ]);
         }
-
-    }
+//    }
 }

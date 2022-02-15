@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Exam\Exam;
 use App\Traits\Uuids;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,5 +54,10 @@ class User extends Authenticatable
         return $this->getAllPermissions()->mapToGroups(function ($permission){
             return [$permission['name'] => true];
         });
+    }
+
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
     }
 }
