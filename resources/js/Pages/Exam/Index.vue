@@ -33,7 +33,7 @@
                                     Pozostały czas:
                                 </div>
                                 <div class="stat-desc">
-                                    <vue-countdown class="flex justify-center" :time="20 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }">
+                                    <vue-countdown class="flex justify-center" @end="refreshData()" :time="getExamExpireTime(exam.ended_at)" v-slot="{ days, hours, minutes, seconds }">
                                         {{ minutes }} minut, {{ seconds }} sekund.
                                     </vue-countdown>
                                 </div>
@@ -43,7 +43,7 @@
                                     Poprawne odpwiedzi:
                                 </div>
                                 <div class="stat-desc flex justify-center">
-                                    9/10
+                                    {{getScore(exam.score)}}
                                 </div>
                             </div>
 
@@ -54,9 +54,15 @@
                         </div>
 
                         <div class="stat place-items-center place-content-center">
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <div class="tooltip tooltip-left z-50" data-tip="Wyświetl">
+                                <Link :href="route('exam.show',exam.id)">
+                                    <svg class="w-7 h-7 view-exam-icon" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                </Link>
+                            </div>
                         </div>
                     </div>
+
+                    <ModalActiveExam />
                 </div>
             </div>
         </div>
@@ -68,6 +74,7 @@ import Breadcrumbs from "@/Components/Breadcrumbs";
 import {Link} from "@inertiajs/inertia-vue3";
 import moment from "moment";
 import VueCountdown from '@chenfengyuan/vue-countdown';
+import ModalActiveExam from "@/Components/ModalActiveExam";
 import {Inertia} from "@inertiajs/inertia";
 
 export default {
@@ -77,19 +84,26 @@ export default {
           type: Object
       }
     },
-    data(){
-        return{
-           examInProgress: this.$attrs.flash.message ?  this.$attrs.flash.message.examInProgress : 0,
-        }
-    },
     components:{
         Breadcrumbs,
         Link,
-        VueCountdown
+        VueCountdown,
+        ModalActiveExam,
+    },
+    data(){
+        return{
+           examInProgress: this.$attrs.flash.exam_in_progress ?  this.$attrs.flash.exam_in_progress : 0,
+        }
+    },
+    mounted() {
+        if(this.examInProgress === 1){
+            document.getElementById('active-exam-button').click();
+           this.examInProgress = 0;
+        }
     },
     methods:{
         formatDate(date) {
-                return moment(date).format('Y-MM-DD HH:mm');
+            return moment(date).format('Y-MM-DD HH:mm');
         },
 
         examStatus(exam){
@@ -114,11 +128,30 @@ export default {
                     return "text-red-700";
                 }
             }
+        },
+        getScore(scoresJson){
+            let scores = JSON.parse(scoresJson);
+            return scores.score+'/'+scores.maxScore;
+        },
+        getExamExpireTime(time)
+        {
+            const now = new Date();
+            const expireExam = new Date(time);
+            return expireExam - now;
+        },
+        refreshData()
+        {
+            Inertia.reload({ only: ['exams'] });
         }
     }
 }
 </script>
 
 <style scoped lang="scss">
-
+    .view-exam-icon{
+        stroke:black;
+        &:hover{
+            stroke: #718096;
+        }
+    }
 </style>
