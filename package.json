@@ -34,8 +34,10 @@
     "dependencies": {
         "@chenfengyuan/vue-countdown": "^2.0.0-rc",
         "@fortawesome/fontawesome-free": "^5.15.4",
+        "apexcharts": "^3.33.1",
         "daisyui": "^1.25.4",
         "moment": "^2.29.1",
-        "vue-uuid": "^2.0.2"
+        "vue-uuid": "^2.0.2",
+        "vue3-apexcharts": "^1.4.1"
     }
 }
