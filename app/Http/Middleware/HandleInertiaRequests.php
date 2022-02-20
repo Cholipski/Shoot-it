@@ -41,6 +41,7 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'message' => fn () => $request->session()->get('message'),
                 'message_time' => fn () => $request->session()->get('message_time'),
+                'exam_in_progress' => fn () => $request->session()->get('exam_in_progress'),
                 'popstate' => false
             ],
         ]);
