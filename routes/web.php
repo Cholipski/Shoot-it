@@ -3,6 +3,7 @@
 use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\FaceBookController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Question\QuestionController;
 use App\Models\Exam\Exam;
 use Illuminate\Support\Facades\Auth;
@@ -26,9 +27,7 @@ Route::get('/', function () {
     return Auth::user() ? Redirect::route('dashboard') : Inertia::render('Auth/Login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/contact',function (){
     return Inertia::render('Contact');
@@ -57,5 +56,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
 
 Route::middleware(['auth', 'verified'])->group(function (){
     Route::resource('exam', ExamController::class);
+    Route::post('/exam/select_answer', [ExamController::class,'selectAnswer'])->name('exam.select_answer');
+    Route::post('/exam/end', [ExamController::class,'end'])->name('exam.end');
 });
 
