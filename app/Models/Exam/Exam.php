@@ -15,17 +15,12 @@ class Exam extends Model
     protected $fillable = [
         'user_id',
         'is_active',
-        'exam_number'
+        'exam_number',
+        'score',
+        'mandatory_mistake',
+        'ended_at',
+        'is_passed'
     ];
-
-    public static function boot()
-    {
-        parent::boot();
-
-        static::created(function(Exam $exam){
-            ExpireExam::dispatch($exam)->delay(now()->addMinutes(20)->addSeconds(30));
-        });
-    }
 
     public function questions(): HasMany
     {

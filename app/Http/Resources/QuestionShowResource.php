@@ -19,7 +19,7 @@ class QuestionShowResource extends JsonResource
     {
         return [
             'question' => $this->value,
-            'answers' => $this->answers()->get(),
+            'answers' => $this->answers()->where('is_delete','=',0)->get(),
         ];
     }
 }
