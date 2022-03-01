@@ -3,7 +3,7 @@
         <div class="overflow-x-auto">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="relative w-full">
-                    <Breadcrumbs />
+                    <Breadcrumbs :crumbs="crumbs"/>
                     <div class="container mx-auto mt-4 flex justify-start">
                         <span class="text-xl bg-white rounded-lg shadow p-5">Liczba pytań: {{questions.meta.total}} </span>
                     </div>
@@ -19,10 +19,13 @@
                         <thead class="border-b bg-neutral">
                         <tr>
                             <th scope="col" class="text-sm font-medium text-white px-6 py-4 w-screen">
-                                <span class="flex gap-4 justify-center items-baseline" @click="sort('value')">
+                                <span class="flex gap-4 justify-center items-center" @click="sort('value')">
                                     <span>Pytanie</span>
                                     <i v-if="params.field === 'value' && params.direction ==='desc'" class="fas fa-sort-amount-down"></i>
                                     <i v-if="params.field === 'value' && params.direction ==='asc'" class="fas fa-sort-amount-up"></i>
+                                    <svg v-if="params.field !== 'value'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+</svg>
                                 </span>
                             </th>
                             <th scope="col" class="text-sm font-medium text-white px-6 py-4">
@@ -99,6 +102,12 @@ export default {
 
     data(){
         return {
+            crumbs: [
+                {
+                    name: 'Pytania egzaminacyjne',
+                    route: 'question.index'
+                }
+            ],
             params: {
                 search: this.filters.search,
                 field: this.filters.field,

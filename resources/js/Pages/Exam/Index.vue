@@ -3,7 +3,7 @@
         <div class="overflow-x-auto">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="relative w-full">
-                    <Breadcrumbs/>
+                    <Breadcrumbs :crumbs="crumbs"/>
 
                     <div class="flex items-center justify-center mt-16">
                         <Link :href="route('exam.create')" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-1.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Rozpocznij nowy egzamin</Link>
@@ -92,6 +92,12 @@ export default {
     },
     data(){
         return{
+            crumbs: [
+                {
+                    name: 'Egzaminy',
+                    route: 'exam.index'
+                },
+            ],
            examInProgress: this.$attrs.flash.exam_in_progress ?  this.$attrs.flash.exam_in_progress : 0,
         }
     },
