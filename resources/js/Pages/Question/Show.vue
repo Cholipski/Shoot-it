@@ -2,6 +2,7 @@
     <div class="flex flex-col">
         <div class="overflow-x-auto">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                <breadcrumbs :crumbs="crumbs" />
                 <span class="text-3xl items-center justify-center text-gray-400 font-bold flex mt-7 mb-2">
                     Pytanie z kategorii: UOBiA
                     <modal-default>
@@ -57,11 +58,13 @@
 <script>
 import ModalDefault from "@/Components/ModalDefault";
 import {random} from "lodash";
+import Breadcrumbs from "@/Components/Breadcrumbs";
 
 export default {
     name: "Show",
     components: {
-        ModalDefault
+        ModalDefault,
+        Breadcrumbs
     },
     props: ['data'],
     methods: {
@@ -71,6 +74,16 @@ export default {
     },
     data(){
         return{
+            crumbs: [
+                {
+                    name: 'Pytania egzaminacyjne',
+                    route: 'question.index'
+                },
+                {
+                    name: window.location.pathname.split('/')[2],
+                    route: ''
+                }
+            ],
             showCorrectAnswer: false,
         }
     }

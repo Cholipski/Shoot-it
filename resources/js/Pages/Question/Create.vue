@@ -3,7 +3,7 @@
         <div class="overflow-x-auto">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="relative w-full">
-                    <Breadcrumbs/>
+                    <Breadcrumbs :crumbs="crumbs"/>
                     <span class="text-3xl items-center justify-center text-gray-400 font-bold flex mt-7 mb-2">
                         Utwórz nowe pytanie
                     </span>
@@ -111,6 +111,16 @@ export default {
     },
     data() {
         return {
+            crumbs: [
+                {
+                    name: 'Pytania egzaminacyjne',
+                    route: 'question.index'
+                },
+                {
+                    name: 'Utwórz nowe pytanie',
+                    route: ''
+                }
+            ],
             ids: {
                 textarea: uuid.v1(),
                 select: uuid.v1(),

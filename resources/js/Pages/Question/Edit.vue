@@ -3,13 +3,11 @@
         <div class="overflow-x-auto">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="relative w-full">
-                    <Breadcrumbs/>
-                    <span class="text-3xl items-center justify-center text-gray-400 font-bold flex mt-7 mb-2">
+                    <Breadcrumbs :crumbs="crumbs"/>
+                    <span class="text-3xl items-center justify-center text-gray-400 font-bold flex mt-14 mb-2">
                         Edycja pytania
                     </span>
-                    <span class="text-xl items-start justify-start text-gray-400 flex mt-7 mb-2">
-                        ID: {{question.id}}
-                    </span>
+
                     <form @submit.prevent="submit" class="w-full mt-6">
                         <div class="flex justify-end items-baseline mt-4 mb-8">
                             <label :for="this.ids.select" class="block mb-2 mr-3 text-sm font-medium text-gray-400">Kategoria pytania:</label>
@@ -98,6 +96,16 @@ export default {
     },
     data() {
         return {
+            crumbs: [
+                {
+                    name: 'Pytania egzaminacyjne',
+                    route: 'question.index'
+                },
+                {
+                    name: window.location.pathname.split('/')[2],
+                    route: ''
+                }
+            ],
             ids: {
                 textarea: uuid.v1(),
                 select: uuid.v1(),
