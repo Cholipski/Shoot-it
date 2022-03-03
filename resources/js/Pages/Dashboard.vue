@@ -144,7 +144,7 @@ export default {
     data: function () {
         return {
             options2: {
-                colors: ['#541E1B','#008000'],
+                colors: ['#003f5c','#ffa600'],
                 labels: ['Niezaliczone', 'Zaliczone'],
             },
             series2: [this.examFailed, this.examPassed],
@@ -173,7 +173,7 @@ export default {
                     colors: ['transparent']
                 },
                 xaxis: {
-                    categories: [ 'Pon', 'Wt', 'Śr', 'Czw', 'Pi', 'So','Nie'],
+                    categories: [ 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota','Niedziela'],
                 },
                 yaxis: {
                     title: {
@@ -181,7 +181,8 @@ export default {
                     }
                 },
                 fill: {
-                    opacity: 1
+                    opacity: 1,
+                    colors: ['#ffa600   ']
                 },
                 tooltip: {
                     y: {

@@ -12,7 +12,7 @@
                             <label :for="this.ids.select" class="block mb-2 mr-3 text-sm font-medium text-gray-400">Wybierz
                                 kategorię</label>
                             <select :id="this.ids.select"
-                                    class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="w-1/2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
                                     v-model="form.category">
                                 <option :value="category.id" :key="category.id"
                                         v-for="(category,index) in this.categories" :selected="index === 0">
@@ -21,7 +21,7 @@
                             </select>
                         </div>
                         <textarea :id="ids.textarea" rows="4" v-model="form.value"
-                                  class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                  class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                                   placeholder="Wprowadź treść pytania"></textarea>
 
                         <div class="w-full flex">
@@ -48,12 +48,7 @@
                                         py-2.5
                                         text-center
                                         mr-2
-                                        mb-2
-                                        dark:border-gray-600
-                                        dark:text-gray-400
-                                        dark:hover:text-white
-                                        dark:hover:bg-gray-600
-                                        dark:focus:ring-gray-800"
+                                        mb-2"
                                         v-if="this.form.answers.length <= 10"
                                 >Dodaj odpowiedź
                                 </button>
@@ -66,11 +61,11 @@
                             </div>
                             <div class="flex mt-2 w-1/2" :class="{ 'ml-6': k < 3 }">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300">
                                 {{ String.fromCharCode(65 + k) }}
                                 </span>
                                 <input type="text" id="website-admin"
-                                       class="rounded-none rounded-r-lg bg-gray-50 w-1/2 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       class="rounded-none rounded-r-lg bg-gray-50 w-1/2 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 text-sm border-gray-300 p-2.5"
                                        placeholder=""
                                        v-model="input.answer"/>
                             </div>

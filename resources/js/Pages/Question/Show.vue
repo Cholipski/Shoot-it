@@ -3,7 +3,7 @@
         <div class="overflow-x-auto">
             <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                 <breadcrumbs :crumbs="crumbs" />
-                <span class="text-3xl items-center justify-center text-gray-400 font-bold flex mt-7 mb-2">
+                <span class="text-2xl md:text-3xl items-center justify-center text-gray-400 font-bold flex mt-7 mb-2">
                     Pytanie z kategorii: UOBiA
                     <modal-default>
                         <template v-slot:ButtonOpen>
@@ -23,30 +23,32 @@
 
                 </span>
                 <div class="mt-8">
-                    <div class="flex h-48 mb-6">
-                        <div class="w-3/4 p-6 h-full">
+                    <div class="flex h-36 mb-6 justify-center md:justify-start">
+                        <div class="w-full p-6 h-full flex items-center">
                             {{this.data.question}}
-                        </div>
-                        <div class="w-1/4 h-full bg-gray-50 border-gray-100 border-2">
                         </div>
                     </div>
 
                     <div class="flex flex-col">
-                        <div class="flex justify-end mt-2">
+                        <div class="flex justify-center md:justify-end mt-2">
                             <button type="button" v-on:click="this.showCorrectAnswer = !this.showCorrectAnswer" class="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800">
                                 {{this.showCorrectAnswer ? 'Ukryj prawidłową odpowiedź' : 'Pokaż prawidłową odpowiedź'}}</button>
 
                         </div>
                         <div v-for="(answer, index) in this.data.answers" :key="index + random"
-                             class="border-gray-300 border-2 mt-2 p-4 rounded cursor-pointer"
-                            :class="[answer.is_correct && showCorrectAnswer ? 'border-green-700 bg-green-600 text-white hover:bg-green-800' : 'border-gray-300 bg-gray-100 hover:bg-gray-200']">
+                             class="border-gray-300 border-2 mt-2 p-4 rounded cursor-pointer flex bg-gray-100 hover:bg-gray-200"
+                             :class="[answer.is_correct && showCorrectAnswer ? 'border-green-700' : 'border-gray-300']">
                             <span
-                                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-full border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-full border border-r-0 border-gray-300">
                                 {{ String.fromCharCode(65 + index) }}
                             </span>
-                            <span class="pl-4 w-1/2">
+                            <span class="pl-4 flex justify-between w-full">
                                 {{answer.value}}
+                                <svg v-if="answer.is_correct && showCorrectAnswer" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="Green">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
                             </span>
+
                         </div>
                     </div>
                 </div>

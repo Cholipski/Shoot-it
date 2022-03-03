@@ -11,14 +11,15 @@
                 <SidebarLink :href="route('dashboard')" icon="fas fa-home" component-name="Dashboard"> Strona główna </SidebarLink>
                 <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>
 
-                <SidebarLink to="/" icon="fas fa-book-reader" component-name="Learning"> Baza wiedzy </SidebarLink>
+                <SidebarLink :href="route('learning.index')" icon="fas fa-book-reader" component-name="Learning"> Baza wiedzy </SidebarLink>
                 <SidebarDropdown icon="fas fa-question">
                     <template v-slot:name>
                         Baza pytań
                     </template>
                     <template v-slot:links>
-                        <SidebarLink :href="route('question.index')" component-name="Score">Wyswietl listę</SidebarLink>
-                        <SidebarLink :href="route('question.create')" component-name="Score">Utwórz nowe</SidebarLink>
+                        <SidebarLink :href="route('question.create')" component-name="Score">Utwórz nowe pytanie</SidebarLink>
+                        <SidebarLink :href="route('question.index')" component-name="Score">Wyswietl listę pytań</SidebarLink>
+                        <SidebarLink :href="route('question_categories.index')" component-name="Score">Wyświetl kategorie</SidebarLink>
                     </template>
                 </SidebarDropdown>
                 <SidebarLink :href="route('exam.index')" icon="fas fa-graduation-cap" component-name="Exams">Egzaminy</SidebarLink>
