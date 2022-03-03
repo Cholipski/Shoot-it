@@ -24,16 +24,15 @@
                 </label>
             </div>
 
-            <div class="flex items-baseline justify-between mt-4 flex-col-reverse sm:flex-row">
-                <div>
-                    <span class="text-lg eb-garamond">
-                        Zapomniałeś hasła?
-                    </span>
-                    <Link :href="route('password.request')" class="eb-garamond underline text-lg text-gray-600 hover:text-gray-900 mt-2">
-                        Przypomnij hasło
-                    </Link>
-                </div>
-
+            <div class="flex items-baseline justify-end mt-4 flex-col-reverse sm:flex-row">
+<!--                <div>-->
+<!--                    <span class="text-lg eb-garamond">-->
+<!--                        Zapomniałeś hasła?-->
+<!--                    </span>-->
+<!--                    <Link :href="route('password.request')" class="eb-garamond underline text-lg text-gray-600 hover:text-gray-900 mt-2">-->
+<!--                        Przypomnij hasło-->
+<!--                    </Link>-->
+<!--                </div>-->
 
                 <AppButton class="sm:ml-4 w-full sm:w-auto text-center justify-center items-center mb-2 mt-2" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Zaloguj się
