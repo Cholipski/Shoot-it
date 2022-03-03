@@ -4,8 +4,10 @@ use App\Http\Controllers\Exam\ExamController;
 use App\Http\Controllers\FaceBookController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Learning\LearningController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Question\CategoryController;
 use App\Http\Controllers\Question\QuestionController;
-use App\Models\Exam\Exam;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +29,6 @@ Route::get('/', function () {
     return Auth::user() ? Redirect::route('dashboard') : Inertia::render('Auth/Login');
 });
 
-Route::get('/dashboard', [HomeController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/contact',function (){
     return Inertia::render('Contact');
@@ -46,17 +47,27 @@ Route::prefix('google')->name('google.')->group( function(){
 });
 
 
-// Question routes
+
 
 Route::middleware(['auth', 'verified'])->group(function (){
+
+    //Dashboard routes
+    Route::get('/dashboard', [HomeController::class,'index'])->name('dashboard');
+
+    // Question routes
     Route::resource('question', QuestionController::class);
-});
+    Route::resource('question_categories', CategoryController::class)->only('index');
 
-// Exam routes
-
-Route::middleware(['auth', 'verified'])->group(function (){
+    // Exam routes
     Route::resource('exam', ExamController::class);
     Route::post('/exam/select_answer', [ExamController::class,'selectAnswer'])->name('exam.select_answer');
     Route::post('/exam/end', [ExamController::class,'end'])->name('exam.end');
+
+    //Profile routes
+    Route::resource('profile', ProfileController::class);
+
+    //learning routes
+    Route::resource('learning', LearningController::class);
 });
+
 
