@@ -19,7 +19,7 @@
                     <template v-slot:links>
                         <SidebarLink :href="route('question.create')" component-name="Score">Utwórz nowe pytanie</SidebarLink>
                         <SidebarLink :href="route('question.index')" component-name="Score">Wyswietl listę pytań</SidebarLink>
-                        <SidebarLink :href="route('question_categories.index')" component-name="Score">Wyświetl kategorie</SidebarLink>
+                        <SidebarLink :href="route('categories.questions.index')" component-name="Score">Wyświetl kategorie</SidebarLink>
                     </template>
                 </SidebarDropdown>
                 <SidebarLink :href="route('exam.index')" icon="fas fa-graduation-cap" component-name="Exams">Egzaminy</SidebarLink>

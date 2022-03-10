@@ -40,7 +40,15 @@
                                 </div>
 
                             </div>
-                            <slot />
+                            <div class="flex flex-col">
+                                <div class="overflow-x-auto">
+                                    <div class="py-4 inline-block w-full p-5 sm:px-6 lg:px-8">
+                                        <div class="relative w-full">
+                                            <slot />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="drawer-side">

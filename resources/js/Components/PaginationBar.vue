@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-col items-center mt-5">
         <span class="text-sm text-gray-700 dark:text-gray-400">
-            Wyświetla pytania od <span class="font-semibold text-gray-900 dark:text-white">{{ this.data.meta.from }}</span> do <span
-            class="font-semibold text-gray-900 dark:text-white">{{ this.data.meta.to }}</span>
+            Wyświetla pytania od <span class="font-semibold text-gray-900">{{ this.data.meta.from }}</span> do <span
+            class="font-semibold text-gray-900">{{ this.data.meta.to }}</span>
         </span>
 
         <div class="btn-group hidden xl:block">
