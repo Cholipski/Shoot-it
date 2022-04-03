@@ -3,9 +3,9 @@
         <slot name="ButtonOpen" />
     </div>
     <teleport to="body">
-        <div v-if="this.isOpen" id="defaultModal" aria-hidden="true" class="overflow-y-auto overflow-x-hidden flex fixed right-0 left-0 top-4 z-50 justify-items-center items-center h-modal md:h-full md:inset-0">
+        <div v-if="this.isOpen" id="defaultModal" aria-hidden="true" class="overflow-y-auto overflow-x-hidden flex fixed right-0 left-0 top-4 z-50 justify-items-center items-center h-modal h-full md:inset-0">
             <div class="relative px-4 w-full h-auto flex justify-center">
-                <div class="relative w-1/3 bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="relative w-5/6 md:w-1/3 bg-white rounded-lg shadow dark:bg-gray-700">
                     <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
                             <slot name="header" />

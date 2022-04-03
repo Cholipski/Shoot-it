@@ -3,6 +3,15 @@
 
     <div class="container mx-auto flex flex-col justify-center  w-full h-full items-center bg-gray-100">
         <Logo class="logo mt-2 sm:mb-8"/>
+        <Transition name="fade">
+            <div v-if="errors.email" class="alert mb-5 mt-5 md:mb-10 md:mt-0 alert-error text-sm shadow-lg w-5/6 md:w-2/3">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>Email lub hasło jest niepoprawne</span>
+                </div>
+            </div>
+        </Transition>
+
         <div class="form-header mt-8 mb-4 sm:mt-0 sm:mb-2 sm:text-xl">
             Nie masz konta? <Link :href="route('register')" class="border-2 rounded-md p-2 hover:bg-gray-200">Utwórz konto</Link>
         </div>
@@ -99,6 +108,16 @@ export default {
 </script>
 <style scoped lang="scss">
     @import '../../../sass/variables';
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s ease;
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+    }
     .form-header{
         font-family: 'EB Garamond',serif;
     }

@@ -57,7 +57,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     // Question routes
     Route::resource('question', QuestionController::class);
     Route::prefix('/categories')->name('categories.')->group(function (){
-        Route::resource('questions', CategoryController::class)->only('index');
+        Route::resource('questions', CategoryController::class);
     });
 
     // Exam routes

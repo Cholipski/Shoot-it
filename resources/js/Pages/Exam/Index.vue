@@ -7,15 +7,16 @@
     <div class="mt-7 mb-3">
         <span class="text-2xl text-gray-400">Historia egzaminów</span>
     </div>
+
     <div class="flex justify-center md:justify-end">
-        <a href="#" class="inline-flex items-center py-2 px-4 mr-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+        <Link :href="previous().url" class="inline-flex items-center py-2 px-4 mr-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
             <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
             Następne
-        </a>
-        <a href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+        </Link>
+        <Link :href="next().url" class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
             Poprzednie
             <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </a>
+        </Link>
     </div>
     <div class="w-full grid-cols-4 shadow stats mt-4 hidden md:flex" v-for="exam in exams.data">
         <div class="stat place-items-center place-content-center">
@@ -108,6 +109,7 @@ import moment from "moment";
 import VueCountdown from '@chenfengyuan/vue-countdown';
 import ModalActiveExam from "@/Components/ModalActiveExam";
 import {Inertia} from "@inertiajs/inertia";
+import PaginationBar from "@/Components/PaginationBar";
 
 export default {
     name: "Index",
@@ -121,6 +123,7 @@ export default {
         Link,
         VueCountdown,
         ModalActiveExam,
+        PaginationBar
     },
     data(){
         return{
@@ -180,6 +183,12 @@ export default {
         refreshData()
         {
             Inertia.reload({ only: ['exams'] });
+        },
+        previous: function () {
+            return this.exams.links[0];
+        },
+        next: function () {
+            return this.exams.links[this.exams.links.length - 1];
         }
     }
 }

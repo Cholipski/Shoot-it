@@ -39,7 +39,8 @@ class GoogleController extends Controller
                     'first_name' => $first_name,
                     'last_name' => $last_name,
                     'email' => $user->getEmail(),
-                    'password' => Hash::make($user->getName().'@'.$user->getId())
+                    'password' => Hash::make($user->getName().'@'.$user->getId()),
+                    'password_set' => 0,
                 ]);
 
                 $this->imageService->storeImageAvatar($user->avatar_original, $saveUser->id);

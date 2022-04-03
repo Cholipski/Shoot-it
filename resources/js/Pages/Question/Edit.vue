@@ -15,6 +15,29 @@
                   class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Wprowadź treść pytania"></textarea>
 
+        <div class="w-full flex justify-center mt-8 md:hidden">
+            <button type="button" @click="add(form.answers.length-1)"
+                    class="
+                        text-gray-900
+                        hover:text-white
+                        border
+                        border-gray-800
+                        hover:bg-gray-900
+                        focus:ring-4
+                        focus:ring-gray-300
+                        font-medium
+                        rounded-lg
+                        text-sm
+                        px-5
+                        py-2.5
+                        text-center
+                        mr-2
+                        mb-2"
+                    v-if="this.form.answers.length <= 10"
+            >Dodaj odpowiedź
+            </button>
+        </div>
+
         <div class="w-full flex">
             <div class="flex justify-center w-1/2 text-gray-400 mt-2 mb-2 items-center">
                 Odpowiedzi:
@@ -22,7 +45,7 @@
             <div class="w-1/4 flex justify-start ml-14 text-gray-400 mt-2 mb-2 items-center">
                 Poprawna
             </div>
-            <div class="w-1/4 mt-2 mb-2">
+            <div class="hidden md:block w-1/4 mt-2 mb-2">
                 <button type="button" @click="add(form.answers.length-1)"
                         class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                         v-if="this.form.answers.length <= 10"

@@ -53,8 +53,8 @@
                         </div>
                         <div class="drawer-side">
                             <label for="my-drawer-3" class="drawer-overlay"></label>
-                            <ul class="p-4 overflow-y-auto menu w-80 bg-base-100">
-                                mobile
+                            <ul class="main-mobile-container p-4 overflow-y-auto menu w-80 bg-base-100">
+                                <MobileMenu />
                             </ul>
                         </div>
                     </div>
@@ -72,6 +72,7 @@ import { Link } from '@inertiajs/inertia-vue3'
 import Notifications from "@/Components/Notifications";
 import Toast from "@/Components/Toast";
 import Footer from "@/Components/Footer";
+import MobileMenu from "@/Components/MobileMenu";
 
 export default {
     components: {
@@ -80,7 +81,8 @@ export default {
         Sidebar,
         Link,
         Notifications,
-        Footer
+        Footer,
+        MobileMenu
     },
 
     data() {
@@ -94,5 +96,8 @@ export default {
     .left-sidebar{
         min-width: 250px;
         max-width: 250px;
+    }
+    .main-mobile-container{
+        background-color: var(--sidebar-bg-color);
     }
 </style>

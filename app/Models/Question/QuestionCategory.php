@@ -12,6 +12,8 @@ class QuestionCategory extends Model
 
     protected $fillable = [
         'name',
+        'short_name',
+        'description'
     ];
 
     public function Question(): BelongsTo
