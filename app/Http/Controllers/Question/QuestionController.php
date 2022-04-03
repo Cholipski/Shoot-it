@@ -83,12 +83,12 @@ class QuestionController extends Controller
             });
 
             return Redirect::route('question.edit', $question)->with([
-                    'message'=>'Question update successfully',
+                    'message'=>'Pytanie zostało zaktualizowane',
                 ]);
         }
         catch(\Exception $e){
             return redirect()->back()->withErrors([
-                'update' => 'Ups, something goes wrong'
+                'update' => 'Ups, coś poszło nie tak'
             ]);
         }
     }
@@ -122,12 +122,12 @@ class QuestionController extends Controller
 
             });
 
-            return Redirect::route('question.index')->with(['message'=>'Question create successfully']);
+            return Redirect::route('question.index')->with(['message'=>'Pytanie zostało utworzone']);
 
         }
         catch(\Exception $e){
             return Redirect::route('question.index')->withErrors([
-                'create' => 'Ups, something goes wrong'
+                'create' => 'Ups, coś poszło nie tak'
             ]);
         }
 
@@ -149,11 +149,11 @@ class QuestionController extends Controller
                 'is_delete' => 1
             ]);
             return Redirect::route('question.index')->with([
-                'message' => 'Question delete successfully'
+                'message' => 'Pytanie zostało usunięte'
             ]);
         }
         catch(Exception $e){
-            return Redirect::back()->withErrors(['delete'=>'Ups, something goes wrong']);
+            return Redirect::back()->withErrors(['delete'=>'Ups, coś poszło nie tak']);
         }
 
     }

@@ -41,7 +41,8 @@ class FaceBookController extends Controller
                     'first_name' => $user['first_name'],
                     'last_name' => $user['last_name'],
                     'email' => $user->getEmail(),
-                    'password' => Hash::make($user->getName() . '@' . $user->getId())
+                    'password' => Hash::make($user->getName() . '@' . $user->getId()),
+                    'password_set' => 0,
                 ]);
                 $this->imageService->storeImageAvatar($user->avatar_original, $saveUser->id);
 

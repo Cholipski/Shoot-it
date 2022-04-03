@@ -57,7 +57,7 @@ class ExamController extends Controller
             return Inertia::render('Exam/ExamActive',[
                     'Questions' => $this->examService->getQuestions($exam->id),
                     'Exam_id' => $exam->id,
-                    'Ended_at' => $exam->ended_at
+                    'Ended_at' => $exam->ended_at,
                 ]
             );
         }
@@ -65,7 +65,8 @@ class ExamController extends Controller
         {
             return Inertia::render('Exam/ExamEnded',[
                     'Questions' => $this->examService->getQuestions($exam->id, true),
-                    'Exam_id' => $exam->id
+                    'Exam_id' => $exam->id,
+                    'is_passed' => $exam->is_passed
                 ]
             );
         }

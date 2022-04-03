@@ -1,8 +1,8 @@
 <template>
     <teleport to="body">
         <transition name="slide-fade">
-            <div v-if="toast && visible && !popstate"  class="toast d-block w-1/3">
-                <div class="alert bg-neutral">
+            <div v-if="toast && visible && !popstate"  class="toast w-full md:w-1/3 ">
+                <div class="alert bg-neutral flex">
                     <div class="flex-1 items-center">
                         <svg class="w-6 h-6" fill="none" stroke="green" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <label class="ml-3">
@@ -11,13 +11,12 @@
                             </p>
                         </label>
                     </div>
-                    <div class="flex-none">
+                    <div class="flex-none btn-close">
                         <button class="btn btn-sm btn-ghost btn-square" v-on:click="this.visible = false">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                     </div>
                 </div>
-
             </div>
 
         </transition>
@@ -56,6 +55,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    .btn-close{
+        margin: 0 !important;
+    }
     .slide-fade-enter-active {
         transition: all 0.3s ease-out;
     }
@@ -78,6 +80,22 @@ export default {
             width: 30px;
             height: 30px;
             color: green;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .alert{
+            flex-direction: row;
+        }
+        .toast{
+            position: fixed;
+            bottom: 10px;
+            right: 0;
+            background: none;
+            .icon{
+                width: 30px;
+                height: 30px;
+                color: green;
+            }
         }
     }
 </style>
