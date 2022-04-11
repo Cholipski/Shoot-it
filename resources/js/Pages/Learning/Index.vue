@@ -8,46 +8,16 @@
     <div class="flex flex-col lg:flex-row justify-between items-center md:mb-24">
         <div class="text-2xl font-extralight mt-3">
             <span class="mr-5">Twój postęp w nauce </span>
-            <div class="radial-progress" style="--value:7;">7%</div>
+            <div class="radial-progress" :style="totalProgressBar()">{{totalProgress(this.NumberAnsweredQuestion, this.NumberQuestions)}}%</div>
         </div>
     </div>
 
     <div class="mt-12">
 
-        <div class="mt-3 mb-4 block flex flex-col gap-2 md:flex-row md:justify-center items-center">
-            <button class="btn btn-wide">Ustawa o bronii i amunicji</button>
-            <progress class="progress w-56 md:ml-5" value="10" max="100"></progress>
+        <div v-for="category in this.categories" class="mt-3 mb-4 block flex flex-col gap-2 md:flex-row md:justify-center items-center">
+            <Link :href="route('learning.show',category.id)" class="btn btn-wide">{{ category.name }}</Link>
+            <progress class="progress w-56 md:ml-5" :value="this.progress[category.id]" :max="this.questionCount[category.id]"></progress>
             <span class="text-lg ml-4"> 10%</span>
-        </div>
-
-        <div class="mt-3 mb-4 flex flex-col gap-2 md:flex-row justify-center items-center">
-            <button class="btn btn-wide">Obrona konieczna</button>
-            <progress class="progress w-56 ml-5" value="0" max="100"></progress>
-            <span class="text-lg ml-4"> 0%</span>
-        </div>
-
-        <div class="mt-3 mb-4 flex flex-col gap-2 md:flex-row justify-center items-center">
-            <button class="btn btn-wide">Bezpieczeństwo w strzelectwie</button>
-            <progress class="progress w-56 md:ml-5" value="0" max="100"></progress>
-            <span class="text-lg ml-4"> 0%</span>
-        </div>
-
-        <div class="mt-3 mb-4 flex flex-col gap-2 md:flex-row justify-center items-center">
-            <button class="btn btn-wide">Zachowanie na strzelnicy</button>
-            <progress class="progress w-56 md:ml-5" value="0" max="100"></progress>
-            <span class="text-lg ml-4"> 0%</span>
-        </div>
-
-        <div class="mt-3 mb-4 flex flex-col gap-2 md:flex-row justify-center items-center">
-            <button class="btn btn-wide">Budowa broni i amunicji</button>
-            <progress class="progress w-56 md:ml-5" value="0" max="100"></progress>
-            <span class="text-lg ml-4"> 0%</span>
-        </div>
-
-        <div class="mt-3 mb-4 flex flex-col gap-2 md:flex-row justify-center items-center">
-            <button class="btn btn-wide">Przepisy sportowe ISSF</button>
-            <progress class="progress w-56 md:ml-5" value="0" max="100"></progress>
-            <span class="text-lg ml-4"> 0%</span>
         </div>
 
     </div>
@@ -55,11 +25,31 @@
 
 <script>
 import Breadcrumbs from "@/Components/Breadcrumbs";
+import {Link} from "@inertiajs/inertia-vue3";
 
 export default {
     name: "Index",
     components: {
         Breadcrumbs,
+        Link
+    },
+    props: {
+        categories:{
+            type: Object,
+            required: true
+        },
+        NumberQuestions: {
+            type: Number,
+        },
+        NumberAnsweredQuestion: {
+            type: Number,
+        },
+        questionCount: {
+            type: Array,
+        },
+        progress: {
+            type: Array
+        }
     },
     data(){
         return {
@@ -71,6 +61,14 @@ export default {
             ]
         }
     },
+    methods:{
+        totalProgress(answered, numberQuestions){
+            return Math.round(answered / numberQuestions * 100);
+        },
+        totalProgressBar(){
+            return "--value:" + this.totalProgress(this.NumberAnsweredQuestion, this.NumberQuestions);
+        }
+    }
 }
 </script>
 

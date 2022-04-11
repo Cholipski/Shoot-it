@@ -11,7 +11,9 @@ class Learning extends Model
 
     protected $fillable = [
         'user_id',
-        'progresss'
+        'progress'
     ];
+    protected $guarded = [];
+
 
 }
