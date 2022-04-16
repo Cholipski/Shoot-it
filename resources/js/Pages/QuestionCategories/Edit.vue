@@ -67,36 +67,36 @@
         <div class="stat-value">4,200</div>
     </div>
 
-    <div class="stats shadow hidden md:flex right-5">
-        <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                </svg>            </div>
-            <div class="stat-title">Ilość pytań w bazie</div>
-            <div class="stat-value">31K</div>
-        </div>
+<!--    <div class="stats shadow hidden md:flex right-5">-->
+<!--        <div class="stat">-->
+<!--            <div class="stat-figure text-secondary">-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />-->
+<!--                </svg>            </div>-->
+<!--            <div class="stat-title">Ilość pytań w bazie</div>-->
+<!--            <div class="stat-value">31K</div>-->
+<!--        </div>-->
 
-        <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>            </div>
-            <div class="stat-title">Ilość pytań w danej kategorii</div>
-            <div class="stat-value">4,200</div>
-        </div>
+<!--        <div class="stat">-->
+<!--            <div class="stat-figure text-secondary">-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />-->
+<!--                </svg>            </div>-->
+<!--            <div class="stat-title">Ilość pytań w danej kategorii</div>-->
+<!--            <div class="stat-value">4,200</div>-->
+<!--        </div>-->
 
-        <div class="stat">
-            <div class="stat-figure text-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-                </svg>            </div>
-            <div class="stat-title">Procent pytań w danej kategorii</div>
-            <div class="stat-value">1,200</div>
-        </div>
+<!--        <div class="stat">-->
+<!--            <div class="stat-figure text-secondary">-->
+<!--                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />-->
+<!--                </svg>            </div>-->
+<!--            <div class="stat-title">Procent pytań w danej kategorii</div>-->
+<!--            <div class="stat-value">1,200</div>-->
+<!--        </div>-->
 
-    </div>
+<!--    </div>-->
 </template>
 
 <script>
