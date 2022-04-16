@@ -83,4 +83,10 @@ class LearningController extends Controller
         ]);
         return Redirect::route('learning.show',$id);
     }
+
+    public function destroy($id){
+        Learning::query()->where('user_id','=',$id)->delete();
+        return Redirect::route('learning.index')->with(['message'=>'Pomyślnie zresetowano postępy']);
+
+    }
 }

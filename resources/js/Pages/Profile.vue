@@ -23,10 +23,13 @@
         </div>
         <div class="w-1/2 flex justify-center flex-col items-center">
             <input type="file" ref="photo" @change="previewImage" style="display: none">
-            <div class="avatar">
-                <div class="w-48 rounded-full">
-                    <img :src="getAvatar()">
+            <div v-if="getAvatar() !== ''" class="avatar">
+                <div  class="w-48 rounded-full">
+                    <img  :src="getAvatar()" />
                 </div>
+            </div>
+            <div v-else class="bg-neutral rounded-full z-50 w-48 h-48 flex justify-center font-bold items-center text-gray-50 text-3xl uppercase">
+                {{ getInitials() }}
             </div>
             <button class="btn md:gap-2 btn-md md:btn-sm mt-3" @click="$refs.photo.click()">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg>
@@ -53,13 +56,13 @@
                 <label class="label">
                     <span class="label-text font-extralight text-gray-700">Nowe hasło</span>
                 </label>
-                <input v-model="this.form.newPassword" type="password" :disabled="!this.passwordIsSet()" class="input input-bordered w-full focus:ring-indigo-200 focus:border-gray-300">
+                <input v-model="this.form.newPassword" type="password" :disabled="!this.form.setPassword" class="input input-bordered w-full focus:ring-indigo-200 focus:border-gray-300">
             </div>
             <div class="form-control w-full">
                 <label class="label">
                     <span class="label-text font-extralight text-gray-700">Powtórz hasło</span>
                 </label>
-                <input v-model="this.form.confirmNewPassword" type="password" :disabled="!this.passwordIsSet()" class="input input-bordered w-full focus:ring-indigo-200 focus:border-gray-300">
+                <input v-model="this.form.confirmNewPassword" type="password" :disabled="!this.form.setPassword" class="input input-bordered w-full focus:ring-indigo-200 focus:border-gray-300">
             </div>
         </div>
         <div class="mb-7 xl:mb-0 xl:ml-10">
@@ -98,7 +101,7 @@ export default {
             ],
             form: this.$inertia.form({
                 _method: 'put',
-                setPassword: false,
+                setPassword: this.passwordIsSet(),
                 firstName: this.$page.props.auth.user.first_name,
                 lastName: this.$page.props.auth.user.last_name,
                 aboutMe: this.$page.props.auth.user.about_me,
@@ -132,6 +135,9 @@ export default {
             this.photo = URL.createObjectURL(file);
             this.form.photo = this.$refs.photo.files[0];
         },
+        getInitials: function (){
+            return this.$page.props.auth.user.first_name[0] + this.$page.props.auth.user.last_name[0];
+        }
     }
 }
 </script>

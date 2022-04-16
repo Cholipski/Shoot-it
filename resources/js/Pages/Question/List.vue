@@ -3,7 +3,7 @@
     <div class="container mx-auto mt-4 flex justify-start">
         <span class="text-xl bg-white rounded-lg shadow p-5">Liczba pytań: {{questions.meta.total}} </span>
     </div>
-    <div class="flex justify-end w-full">
+    <div class="flex justify-end w-full" v-if="hasAnyPermission(['create questions'])">
         <Link
             :href="route('question.create')"
             class="btn btn-outline rounded hover:bg-gray-neural hover:text-gray-200"> Dodaj pytanie </Link>

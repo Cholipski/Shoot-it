@@ -26,10 +26,10 @@ class PermissionSeeder extends Seeder
 
         // Question model
 
-        $can_create_question = Permission::create(['name' => 'create question']);
+        $can_create_question = Permission::create(['name' => 'create questions']);
         $can_view_questions = Permission::create(['name' => 'view questions']);
         $can_delete_question = Permission::create(['name' => 'delete question']);
-        $can_update_question = Permission::create(['name' => 'update question']);
+        $can_update_question = Permission::create(['name' => 'edit question']);
         $can_show_question = Permission::create(['name' => 'show question']);
 
         // Answer model
@@ -41,10 +41,12 @@ class PermissionSeeder extends Seeder
 
         // CategoryQuestion model
 
-        $can_create_category = Permission::create(['name' => 'create category']);
+        $can_create_category = Permission::create(['name' => 'create categories']);
         $can_view_categories = Permission::create(['name' => 'view categories']);
         $can_delete_category = Permission::create(['name' => 'delete category']);
         $can_update_category = Permission::create(['name' => 'update category']);
+
+
 
 
         // Finding roles

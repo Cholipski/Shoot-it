@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Question\QuestionAnswer;
+use App\Models\Question\QuestionCategory;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class QuestionShowResource extends JsonResource
@@ -20,6 +21,7 @@ class QuestionShowResource extends JsonResource
         return [
             'question' => $this->value,
             'answers' => $this->answers()->where('is_delete','=',0)->get(),
+            'category' => QuestionCategory::find($this->category_id),
         ];
     }
 }

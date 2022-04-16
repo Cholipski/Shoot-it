@@ -9,7 +9,7 @@
 
             <div class="nav mt-10">
                 <SidebarLink :href="route('dashboard')" icon="fas fa-home" component-name="Dashboard"> Strona główna </SidebarLink>
-                <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>
+<!--                <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>-->
 
                 <SidebarLink :href="route('learning.index')" icon="fas fa-book-reader" component-name="Learning"> Baza wiedzy </SidebarLink>
                 <SidebarDropdown icon="fas fa-question">

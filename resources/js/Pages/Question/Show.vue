@@ -1,7 +1,7 @@
 <template>
     <breadcrumbs :crumbs="crumbs" />
     <span class="text-2xl md:text-3xl items-center justify-center text-gray-400 font-bold flex mt-7 mb-2">
-        Pytanie z kategorii: UOBiA
+        Pytanie z kategorii: {{ data.category.short_name }}
         <modal-default>
             <template v-slot:ButtonOpen>
                 <sup>
@@ -10,11 +10,11 @@
             </template>
             <template v-slot:main>
                 <span>
-                    Ustawa z dnia 21 maja 1999 r. o broni i amunicji – polska ustawa regulująca zasady wydawania i cofania pozwoleń na broń, procedur obrotu bronią i amunicją, zasady jej posiadania przez cudzoziemców oraz zasady działania strzelnic.
+                    {{ data.category.description }}
                 </span>
             </template>
             <template v-slot:header>
-                Ustawa o broni i amunicji
+                {{ data.category.name }}
             </template>
         </modal-default>
 

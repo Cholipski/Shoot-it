@@ -1,7 +1,7 @@
 <template>
     <div class="pb-3 pt-3 flex flex-col justify-center">
         <img v-if="getAvatar() !== ''" class="rounded-full z-50 mx-auto w-14 h-14" :src="getAvatar()" />
-        <div v-else class="bg-neutral rounded-full z-50 w-14 h-14 flex justify-center mx-auto font-bold items-center text-gray-50">
+        <div v-else class="bg-neutral rounded-full z-50 w-14 h-14 flex justify-center mx-auto font-bold items-center text-gray-50 uppercase">
             {{ getInitials() }}
         </div>
         <transition name="fade">
