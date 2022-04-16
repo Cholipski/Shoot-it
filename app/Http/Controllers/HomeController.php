@@ -14,9 +14,11 @@ class HomeController extends Controller
     public function index(){
 
         $failedExams = Exam::query()->where('is_active','=',0)
+            ->where('user_id','=',Auth::user()->id)
             ->where('is_passed','=',0)->count();
 
         $passedExams = Exam::query()->where('is_active','=',0)
+            ->where('user_id','=',Auth::user()->id)
             ->where('is_passed','=',1)->count();
 
         $exams = Exam::query()

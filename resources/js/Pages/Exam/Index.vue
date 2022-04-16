@@ -1,14 +1,58 @@
 <template>
     <Breadcrumbs :crumbs="crumbs"/>
 
-    <div class="flex items-center justify-center mt-16">
+    <div class="flex items-center justify-center mt-16" v-if="exams.data.length !== 0">
         <Link :href="route('exam.create')" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-1.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Rozpocznij nowy egzamin</Link>
     </div>
-    <div class="mt-7 mb-3">
+    <div class="flex items-center justify-center mt-16" v-if="exams.data.length === 0">
+        <Link :href="route('exam.create')" class="text-gray-900 text-3xl hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-1.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Rozpocznij nowy egzamin</Link>
+    </div>
+    <div v-if="exams.data.length === 0" class="flex justify-center w-full mt-8">
+        <svg version="1.1" class="w-1/6" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 508 508" style="enable-background:new 0 0 508 508;" xml:space="preserve">
+<circle style="fill:#FD8469;" cx="254" cy="254" r="254"/>
+            <path style="fill:#FFFFFF;" d="M122.8,102.4v302.8c0,8.8,7.2,16.4,16.4,16.4H316v-52.4c0-9.2,7.2-16.4,16.4-16.4h52.4V102.4  c0-8.8-7.2-16.4-16.4-16.4H139.2C130,86.4,122.8,93.6,122.8,102.4z"/>
+            <path style="fill:#E6E9EE;" d="M316,421.6l68.8-68.8h-52c-9.2,0-16.4,7.2-16.4,16.4v52.4H316z"/>
+            <g>
+	<path style="fill:#84DBFF;" d="M259.6,297.2l-10.8-25.6h-49.6l-10.8,25.6h-28l50.8-118h25.6l50.8,118H259.6z M224,214.4l-14.8,34.4   h29.6L224,214.4z"/>
+                <path style="fill:#84DBFF;" d="M309.2,239.2v-22.4h-21.6v-15.2h21.6v-22.4H326v22.4h21.6v15.2H326v22.4H309.2z"/>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+            <g>
+</g>
+</svg>
+    </div>
+    <div class="mt-7 mb-3" v-if="exams.data.length !== 0">
         <span class="text-2xl text-gray-400">Historia egzaminów</span>
     </div>
 
-    <div class="flex justify-center md:justify-end">
+    <div class="flex justify-center md:justify-end" v-if="exams.data.length !== 0">
         <Link :href="previous().url" class="inline-flex items-center py-2 px-4 mr-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
             <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
             Następne

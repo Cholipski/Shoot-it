@@ -46,12 +46,12 @@
                         <i class="fas fa-eye text-lg hover:text-gray-500"></i>
                     </Link>
                 </div>
-                <div data-tip="Edytuj" class="tooltip">
+                <div data-tip="Edytuj" class="tooltip" v-if="hasAnyPermission(['edit question'])">
                     <Link :href="route('question.edit', {id: question.id})">
                         <i class="fas fa-edit text-lg hover:text-gray-500"></i>
                     </Link>
                 </div>
-                <delete-confirmation :route="route('question.destroy', {id: question.id})">
+                <delete-confirmation :route="route('question.destroy', {id: question.id})" v-if="hasAnyPermission(['delete question'])">
                     <div data-tip="Usuń " class="tooltip">
                         <i class="fas fa-trash-alt text-lg hover:text-red-300 text-red-700"></i>
                     </div>

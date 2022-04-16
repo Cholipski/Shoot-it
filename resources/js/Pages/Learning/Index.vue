@@ -14,9 +14,9 @@
 
     <div class="mt-12">
 
-        <div v-for="category in this.categories" class="mt-3 mb-4 block flex flex-col gap-2 md:flex-row md:justify-center items-center">
+        <div v-if="this.categories.length !== 0" v-for="category in this.categories" class="mt-3 mb-4 block flex flex-col gap-2 md:flex-row md:justify-center items-center">
             <Link :href="route('learning.show',category.id)" class="btn btn-wide">{{ category.name }}</Link>
-            <progress class="progress w-56 md:ml-5" :value="this.progress[category.id]" :max="this.questionCount[category.id]"></progress>
+            <progress class="progress w-56 md:ml-5" :value="this.progress ? this.progress[category.id] : 0" :max="this.questionCount ? this.questionCount[category.id] : 0"></progress>
             <span class="text-lg ml-4"> 10%</span>
         </div>
 

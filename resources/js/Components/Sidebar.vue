@@ -17,7 +17,7 @@
                         Baza pytań
                     </template>
                     <template v-slot:links>
-                        <SidebarLink :href="route('question.create')" component-name="Score">Utwórz nowe pytanie</SidebarLink>
+                        <SidebarLink v-if="hasAnyPermission(['create questions'])" :href="route('question.create')" component-name="Score">Utwórz nowe pytanie</SidebarLink>
                         <SidebarLink :href="route('question.index')" component-name="Score">Wyswietl listę pytań</SidebarLink>
                         <SidebarLink :href="route('categories.questions.index')" component-name="Score">Wyświetl kategorie</SidebarLink>
                     </template>

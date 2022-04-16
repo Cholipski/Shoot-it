@@ -14,12 +14,51 @@
         </div>
         <div>
             <h1 class="flex justify-center text-xl pb-5">Egzaminy zaliczone</h1>
-            <VueApexCharts :options="options2" :series="series2" class="flex justify-center justify-items-center"
+            <span class="text-gray-400 text-3xl flex justify-center flex-col alert bg-transparent" v-if="this.$page.props.examPassed === 0 && this.$page.props.examFailed === 0">
+                Brak egzaminów
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="106.059px" height="106.059px" viewBox="0 0 106.059 106.059" style="enable-background:new 0 0 106.059 106.059;" xml:space="preserve">
+<g>
+	<path d="M90.546,15.518C69.858-5.172,36.199-5.172,15.515,15.513C-5.173,36.198-5.171,69.858,15.517,90.547   c20.682,20.684,54.341,20.684,75.027-0.004C111.23,69.858,111.229,36.2,90.546,15.518z M84.757,84.758   c-17.494,17.494-45.96,17.496-63.455,0.002c-17.498-17.497-17.496-45.966,0-63.46C38.796,3.807,67.261,3.805,84.759,21.302   C102.253,38.796,102.251,67.265,84.757,84.758z M77.017,74.001c0.658,1.521-0.042,3.286-1.562,3.943   c-1.521,0.66-3.286-0.042-3.944-1.562c-2.893-6.689-9.73-11.012-17.421-11.012c-7.868,0-14.747,4.319-17.522,11.004   c-0.479,1.154-1.596,1.851-2.771,1.851c-0.384,0-0.773-0.074-1.15-0.23c-1.53-0.636-2.255-2.392-1.62-3.921   c3.71-8.932,12.764-14.703,23.063-14.703C64.174,59.371,73.174,65.113,77.017,74.001z M33.24,38.671   c0-3.424,2.777-6.201,6.201-6.201c3.423,0,6.2,2.776,6.2,6.201c0,3.426-2.777,6.202-6.2,6.202   C36.017,44.873,33.24,42.097,33.24,38.671z M61.357,38.671c0-3.424,2.779-6.201,6.203-6.201c3.423,0,6.2,2.776,6.2,6.201   c0,3.426-2.776,6.202-6.2,6.202S61.357,42.097,61.357,38.671z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+            </span>
+            <VueApexCharts v-else :options="options2" :series="series2" class="flex justify-center justify-items-center"
                            type="donut" width="380"></VueApexCharts>
         </div>
     </div>
     <div class="grid grid-cols-1 grid-rows-1" v-if="lastExams">
         <span class="text-xl mb-2 mt-10 text-neutral">Ostatnie egzaminy</span>
+        <span class="text-gray-400 text-3xl flex justify-center" v-if="this.lastExams.length === 0"> Brak egzaminów </span>
         <div class="w-full grid-cols-3 md:grid-cols-4 shadow stats mt-4" v-for="exam in this.lastExams">
             <div class="stat place-items-center place-content-center">
                 <div class="stat-value text-sm  md:text-xl font-normal  ">Egzamin # {{exam.exam_number}}</div>

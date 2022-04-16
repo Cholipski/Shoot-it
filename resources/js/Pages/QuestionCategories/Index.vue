@@ -2,7 +2,7 @@
     <Breadcrumbs :crumbs="crumbs"/>
 
     <div class="w-full h-2/5 mt-8">
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" v-if="hasAnyPermission(['create categories'])">
             <div class="flex">
                 <div class="form-control w-full pr-5">
                     <label class="label">
@@ -56,7 +56,7 @@
                         <th class="font-semibold text-sm uppercase px-6 py-4"> Nazwa </th>
                         <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Opis </th>
                         <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Skrócona nazwa </th>
-                        <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                        <th class="font-semibold text-sm uppercase px-6 py-4 text-center" v-if="hasAnyPermission(['edit category'])">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                             </svg>
@@ -77,7 +77,7 @@
                                 <p class=""> {{ category.description }} </p>
                             </td>
                             <td class="px-6 py-4 text-center"> <span class="text-white whitespace-nowrap text-sm bg-orange-500 p-2 font-semibold px-2 rounded-full"> {{ category.short_name }} </span> </td>
-                            <td class="text-center">
+                            <td class="text-center" v-if="hasAnyPermission(['edit category'])">
                                 <div data-tip="Wyświetl" class="tooltip">
                                     <Link :href="route('categories.questions.edit', {id: category.id})">
                                         <i class="fas fa-eye text-lg hover:text-gray-500"></i>

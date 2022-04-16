@@ -5,7 +5,7 @@
     </div>
 
     <SidebarLink :href="route('dashboard')" icon="fas fa-home" component-name="Dashboard"> Strona główna </SidebarLink>
-    <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>
+<!--    <SidebarLink v-if="hasAnyPermission(['view users'])" to="/" icon="fas fa-user" component-name="Users"> Użytkownicy </SidebarLink>-->
 
     <SidebarLink :href="route('learning.index')" icon="fas fa-book-reader" component-name="Learning"> Baza wiedzy </SidebarLink>
     <SidebarDropdown class="text-white" icon="fas fa-question">
@@ -13,7 +13,7 @@
             Baza pytań
         </template>
         <template v-slot:links>
-            <SidebarLink :href="route('question.create')" component-name="Score">Utwórz nowe pytanie</SidebarLink>
+            <SidebarLink v-if="hasAnyPermission(['create questions'])" :href="route('question.create')" component-name="Score">Utwórz nowe pytanie</SidebarLink>
             <SidebarLink :href="route('question.index')" component-name="Score">Wyswietl listę pytań</SidebarLink>
             <SidebarLink :href="route('categories.questions.index')" component-name="Score">Wyświetl kategorie</SidebarLink>
         </template>
