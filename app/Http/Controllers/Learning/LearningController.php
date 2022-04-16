@@ -48,6 +48,7 @@ class LearningController extends Controller
     {
         $progressObject = Learning::where('user_id','=',Auth::user()->getAuthIdentifier())->first();
 
+
         if($progressObject === null)
         {
             $progressArray = [];
@@ -56,6 +57,7 @@ class LearningController extends Controller
                 'user_id' => Auth::user()->getAuthIdentifier(),
                 'progress' => json_encode($progressArray),
             ]);
+            $progressObject = Learning::where('user_id','=',Auth::user()->getAuthIdentifier())->first();
         }
         $progress = json_decode($progressObject->progress, true);
         if(!array_key_exists($id,$progress))
